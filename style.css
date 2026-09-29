@@ -3107,3 +3107,103 @@ body {
     }
 
 }
+```css
+/* =========================================
+   DESIGN BY FEID
+   ========================================= */
+
+.design-signature {
+
+    position: absolute;
+
+    bottom: 12px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-family: monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: rgba(150, 255, 190, .45);
+
+    text-shadow:
+        0 0 6px rgba(0, 255, 120, .25);
+
+    opacity: .7;
+
+    user-select: none;
+
+    white-space: nowrap;
+
+    animation:
+        signatureGlitch 7s infinite;
+
+}
+
+
+/* Pequeña interferencia */
+
+@keyframes signatureGlitch {
+
+    0%, 91%, 100% {
+
+        transform:
+            translateX(-50%);
+
+        opacity: .7;
+
+    }
+
+    92% {
+
+        transform:
+            translateX(calc(-50% - 2px));
+
+        opacity: .95;
+
+        text-shadow:
+            2px 0 rgba(0,255,130,.7),
+            -2px 0 rgba(255,0,70,.35);
+
+    }
+
+    93% {
+
+        transform:
+            translateX(calc(-50% + 2px));
+
+        opacity: .45;
+
+    }
+
+    94% {
+
+        transform:
+            translateX(-50%);
+
+        opacity: .7;
+
+    }
+
+}
+
+
+/* Móvil */
+
+@media (max-width: 600px) {
+
+    .design-signature {
+
+        bottom: 8px;
+
+        font-size: 7px;
+
+        letter-spacing: 3px;
+
+    }
+
+}
+```
