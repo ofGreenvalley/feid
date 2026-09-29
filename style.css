@@ -1,340 +1,730 @@
+/* =========================================
+   RESET
+   ========================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 body {
-    background: #050505;
+
+    background: #020403;
+
     color: white;
+
     font-family: Arial, sans-serif;
+
     overflow: hidden;
+
 }
 
-/* FONDO */
+
+/* =========================================
+   PANTALLA DE ENTRADA
+   ========================================= */
+
 .intro {
+
+    position: relative;
+
     width: 100%;
+
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
     background-image:
+
         linear-gradient(
             rgba(0, 0, 0, 0.55),
             rgba(0, 0, 0, 0.65)
         ),
+
         url("https://u.cubeupload.com/Eradicater/file00000000b36081f5.png");
 
     background-size: 110%;
+
     background-position: center;
+
     background-repeat: no-repeat;
 
-    animation: latveria 18s ease-in-out infinite alternate;
+    animation:
+        latveria 18s ease-in-out infinite alternate;
+
+    z-index: 10;
+
 }
 
-/* CONTENIDO */
 
 .content {
-    animation: aparecer 2s ease;
+
+    animation:
+        aparecer 2s ease;
+
 }
 
-/* TITULO */
 
-h1 {
+.content h1 {
+
     font-size: 80px;
+
     font-weight: 300;
 
     letter-spacing: 20px;
+
     margin-left: 20px;
 
-    text-shadow:
-        0 0 20px rgba(255, 255, 255, 0.15);
 }
 
-/* FRASE */
 
-p {
+.content p {
+
     margin-top: 20px;
 
     color: #aaa;
 
     font-size: 14px;
-    letter-spacing: 2px;
+
 }
 
-/* BOTON */
 
-button {
+#start {
+
     margin-top: 40px;
 
     padding: 12px 35px;
 
-    background: rgba(0, 0, 0, 0.25);
+    background: transparent;
 
     color: white;
 
-    border: 1px solid #666;
+    border: 1px solid #555;
 
     letter-spacing: 4px;
 
     cursor: pointer;
 
-    transition: 0.4s;
 }
 
-button:hover {
-    background: white;
-    color: black;
 
-    border-color: white;
-}
-
-/* ANIMACION */
+/* =========================================
+   ANIMACIONES INTRO
+   ========================================= */
 
 @keyframes aparecer {
 
     from {
+
         opacity: 0;
-        transform: translateY(20px);
+
+        transform:
+            translateY(20px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
 }
+
+
 @keyframes latveria {
 
     from {
+
         background-size: 110%;
-        background-position: center;
+
     }
 
     to {
+
         background-size: 120%;
-        background-position: center;
+
     }
 
 }
-/* =========================================
-   HECHICERÍA LATVERIANA — GLITCH ESMERALDA
-   ========================================= */
-
-.intro {
-    position: relative;
-    overflow: hidden;
-}
-
-/* Aura verde */
-
-.intro {
-    box-shadow:
-        inset 0 0 120px rgba(0, 255, 90, 0.08),
-        inset 0 0 250px rgba(0, 255, 70, 0.05);
-}
 
 
 /* =========================================
-   CAPA DE ENERGÍA
+   HOME
    ========================================= */
 
-.intro::after {
-    content: "";
+.home {
 
     position: absolute;
-    inset: -10px;
 
-    background-image:
-        linear-gradient(
-            rgba(0, 255, 80, 0.08),
-            rgba(0, 0, 0, 0.45)
-        ),
-        url("https://u.cubeupload.com/Eradicater/file00000000b36081f5.png");
+    inset: 0;
 
-    background-size: 110%;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    z-index: 1;
-
-    mix-blend-mode: screen;
-
-    animation: hechiceria 2.3s infinite;
-}
-
-
-/* =========================================
-   BANDAS DE ENERGÍA
-   ========================================= */
-
-.intro::before {
-    content: "";
-
-    position: absolute;
-    inset: -20%;
-
-    pointer-events: none;
-
-    z-index: 2;
+    min-height: 100vh;
 
     background:
-        repeating-linear-gradient(
-            0deg,
-            transparent 0px,
-            transparent 7px,
 
-            rgba(0, 255, 90, 0.05) 8px,
+        radial-gradient(
+            circle at center,
+            rgba(0, 255, 100, 0.07),
+            transparent 45%
+        ),
 
-            rgba(0, 255, 90, 0.35) 9px,
+        #020403;
 
-            rgba(100, 255, 170, 0.12) 10px,
+    display: flex;
 
-            transparent 12px
-        );
+    flex-direction: column;
+
+    align-items: center;
 
     opacity: 0;
 
-    mix-blend-mode: screen;
+    pointer-events: none;
 
-    animation: energiaVerde 2.3s infinite;
+    transition:
+        opacity 1s ease;
+
 }
 
 
 /* =========================================
-   HECHICERÍA
+   MENÚ
    ========================================= */
 
-@keyframes hechiceria {
+.menu {
 
-    0%,
-    55%,
-    100% {
-        opacity: 0;
-        transform: translate(0);
-        filter: none;
-    }
+    position: absolute;
 
-    56% {
-        opacity: 0.45;
+    top: 30px;
 
-        transform:
-            translate(-12px, 2px)
-            scale(1.02);
+    left: 35px;
 
-        filter:
-            hue-rotate(70deg)
-            saturate(2.5)
-            brightness(1.15)
-            contrast(1.3);
-    }
+    z-index: 20;
 
-    57% {
-        opacity: 0.75;
+}
 
-        transform:
-            translate(10px, -2px)
-            scale(1.01);
 
-        filter:
-            hue-rotate(100deg)
-            saturate(3.5)
-            brightness(1.25);
-    }
+.menu-main {
 
-    58% {
-        opacity: 0.35;
+    background: transparent;
 
-        transform:
-            translate(-8px, 1px);
+    color: #dffff0;
 
-        filter:
-            hue-rotate(65deg)
-            saturate(4);
-    }
+    border: 1px solid rgba(
+        0,
+        255,
+        100,
+        0.5
+    );
 
-    59% {
-        opacity: 0.85;
+    padding: 10px 20px;
 
-        transform:
-            translate(5px, 0);
+    letter-spacing: 4px;
 
-        filter:
-            hue-rotate(90deg)
-            saturate(4.5)
-            brightness(1.2);
-    }
+    cursor: pointer;
 
-    60% {
-        opacity: 0.25;
+}
 
-        transform:
-            translate(-3px, 0);
-    }
 
-    61% {
-        opacity: 0.65;
+.menu-main span {
 
-        filter:
-            hue-rotate(110deg)
-            saturate(5);
-    }
+    margin-left: 10px;
 
-    62% {
-        opacity: 0;
-        transform: translate(0);
-    }
+    color: #00ff66;
+
+}
+
+
+.menu-options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 10px;
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+        0.4s ease;
+
+}
+
+
+.menu-options.active {
+
+    max-height: 200px;
+
+    opacity: 1;
+
+}
+
+
+.menu-options button {
+
+    background: rgba(
+        0,
+        20,
+        10,
+        0.8
+    );
+
+    color: #baffd0;
+
+    border: 1px solid rgba(
+        0,
+        255,
+        100,
+        0.25
+    );
+
+    padding: 9px 18px;
+
+    text-align: left;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+}
+
+
+.menu-options button:hover {
+
+    background:
+        rgba(
+            0,
+            255,
+            100,
+            0.12
+        );
+
+    border-color:
+        rgba(
+            0,
+            255,
+            100,
+            0.7
+        );
+
 }
 
 
 /* =========================================
-   BANDAS ESMERALDA
+   AVATAR
    ========================================= */
 
-@keyframes energiaVerde {
+.avatar-section {
 
-    0%,
-    54%,
-    100% {
-        opacity: 0;
-        transform: translateY(0);
+    margin-top: 100px;
+
+}
+
+
+.avatar {
+
+    width: 220px;
+
+    height: 300px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+
+        1px solid
+        rgba(
+            0,
+            255,
+            100,
+            0.25
+        );
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(
+                0,
+                255,
+                100,
+                0.12
+            ),
+            transparent 70%
+        );
+
+    box-shadow:
+
+        0 0 50px
+        rgba(
+            0,
+            255,
+            100,
+            0.08
+        );
+
+}
+
+
+.avatar-placeholder {
+
+    color:
+        rgba(
+            150,
+            255,
+            180,
+            0.4
+        );
+
+    letter-spacing: 6px;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================
+   PANTALLA DEL UNIVERSO
+   ========================================= */
+
+.universe {
+
+    margin-top: 35px;
+
+}
+
+
+.screen {
+
+    position: relative;
+
+    width: 520px;
+
+    height: 180px;
+
+    overflow: hidden;
+
+    border:
+
+        1px solid
+        rgba(
+            0,
+            255,
+            100,
+            0.45
+        );
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(
+                0,
+                255,
+                100,
+                0.08
+            ),
+            #010302
+        );
+
+    box-shadow:
+
+        inset 0 0 40px
+        rgba(
+            0,
+            255,
+            100,
+            0.08
+        ),
+
+        0 0 25px
+        rgba(
+            0,
+            255,
+            100,
+            0.08
+        );
+
+}
+
+
+/* =========================================
+   PLANETAS
+   ========================================= */
+
+.planet {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        0 0 15px
+        rgba(
+            0,
+            255,
+            100,
+            0.35
+        );
+
+}
+
+
+.planet-one {
+
+    width: 45px;
+
+    height: 45px;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #d7ffe5,
+            #178a4b 45%,
+            #02150b
+        );
+
+    animation:
+        planetaUno 4s infinite;
+
+}
+
+
+.planet-two {
+
+    width: 30px;
+
+    height: 30px;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #eafff1,
+            #2cb86b 45%,
+            #031509
+        );
+
+    animation:
+        planetaDos 4s infinite;
+
+}
+
+
+.planet-three {
+
+    width: 20px;
+
+    height: 20px;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #b8ffd0,
+            #0b6735 50%,
+            #010805
+        );
+
+    animation:
+        planetaTres 5s infinite;
+
+}
+
+
+.planet-four {
+
+    width: 15px;
+
+    height: 15px;
+
+    background: #55ff9a;
+
+    animation:
+        planetaCuatro 3s infinite;
+
+}
+
+
+/* =========================================
+   MOVIMIENTO DE PLANETAS
+   ========================================= */
+
+@keyframes planetaUno {
+
+    0% {
+
+        left: -60px;
+
+        top: 50px;
+
+    }
+
+    45% {
+
+        left: 45%;
+
+        top: 75px;
+
     }
 
     55% {
-        opacity: 0.25;
-        transform: translateY(-8px);
+
+        left: 52%;
+
+        top: 75px;
+
     }
 
-    56% {
-        opacity: 0.65;
-        transform: translateY(10px);
+    100% {
+
+        left: 110%;
+
+        top: 55px;
+
     }
 
-    57% {
-        opacity: 0.35;
-        transform: translateY(-5px);
+}
+
+
+@keyframes planetaDos {
+
+    0% {
+
+        left: 110%;
+
+        top: 100px;
+
     }
 
-    58% {
-        opacity: 0.8;
-        transform: translateY(4px);
+    45% {
+
+        left: 55%;
+
+        top: 80px;
+
     }
 
-    59% {
-        opacity: 0.4;
-        transform: translateY(-3px);
+    55% {
+
+        left: 48%;
+
+        top: 80px;
+
     }
 
-    60% {
-        opacity: 0;
-        transform: translateY(0);
+    100% {
+
+        left: -50px;
+
+        top: 100px;
+
     }
+
+}
+
+
+@keyframes planetaTres {
+
+    0% {
+
+        left: -30px;
+
+        top: 20px;
+
+    }
+
+    50% {
+
+        left: 50%;
+
+        top: 95px;
+
+    }
+
+    100% {
+
+        left: 110%;
+
+        top: 30px;
+
+    }
+
+}
+
+
+@keyframes planetaCuatro {
+
+    0% {
+
+        left: 100%;
+
+        top: 30px;
+
+    }
+
+    50% {
+
+        left: 50%;
+
+        top: 100px;
+
+    }
+
+    100% {
+
+        left: -20px;
+
+        top: 40px;
+
+    }
+
+}
+
+
+/* =========================================
+   ENERGÍA
+   ========================================= */
+
+.energy {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 5px,
+            rgba(
+                0,
+                255,
+                100,
+                0.04
+            ) 6px
+        );
+
 }
