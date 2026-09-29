@@ -1060,3 +1060,433 @@ body {
         letter-spacing: 2px;
     }
 }
+/* =========================================
+   SECTION SYSTEM
+   ========================================= */
+
+.sections {
+    position: absolute;
+    inset: 75px 0 0;
+
+    z-index: 5;
+}
+
+.section {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(12px);
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        visibility .35s;
+}
+
+.section.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   SECTION TITLE
+   ========================================= */
+
+.section-title {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid rgba(0,255,100,.15);
+}
+
+.section-title span {
+    font-size: 18px;
+    letter-spacing: 5px;
+    font-weight: 700;
+}
+
+.section-title small {
+    color: #00ff73;
+
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   FRIENDS
+   ========================================= */
+
+.friends-panel {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: min(700px, 85vw);
+
+    transform: translate(-50%, -50%);
+
+    padding: 30px;
+
+    border: 1px solid rgba(0,255,100,.2);
+
+    background: rgba(0,0,0,.65);
+
+    box-shadow:
+        0 0 40px rgba(0,255,100,.06);
+
+    backdrop-filter: blur(10px);
+}
+
+.friends-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.friend-card {
+    min-height: 75px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 12px;
+
+    border: 1px solid rgba(0,255,100,.12);
+
+    background: rgba(0,255,100,.025);
+
+    transition: .3s;
+}
+
+.friend-card:hover {
+    border-color: rgba(0,255,100,.5);
+
+    background: rgba(0,255,100,.07);
+
+    transform: translateX(5px);
+}
+
+.friend-avatar {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(0,255,100,.4);
+
+    color: #00ff73;
+
+    font-size: 10px;
+
+    box-shadow:
+        inset 0 0 15px rgba(0,255,100,.05);
+}
+
+.friend-card strong {
+    display: block;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+.friend-card small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #00ff73;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   MUSIC
+   ========================================= */
+
+.music-panel {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: min(700px, 88vw);
+
+    transform: translate(-50%, -50%);
+
+    padding: 30px;
+
+    border: 1px solid rgba(0,255,100,.2);
+
+    background: rgba(0,0,0,.7);
+
+    box-shadow:
+        0 0 50px rgba(0,255,100,.07);
+
+    backdrop-filter: blur(12px);
+}
+
+.music-player {
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+
+/* ALBUM */
+
+.album-art {
+    position: relative;
+
+    flex-shrink: 0;
+
+    width: 190px;
+    height: 190px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(0,255,100,.35);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,255,100,.25),
+            #020402 65%
+        );
+
+    color: white;
+
+    font-size: 28px;
+    font-weight: 900;
+
+    letter-spacing: 5px;
+
+    box-shadow:
+        0 0 35px rgba(0,255,100,.1);
+}
+
+.album-glow {
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    background: #00ff73;
+
+    filter: blur(60px);
+
+    opacity: .25;
+
+    animation: albumPulse 2s infinite alternate;
+}
+
+.album-art span {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* MUSIC INFO */
+
+.music-info {
+    flex: 1;
+}
+
+.music-label {
+    color: #00ff73;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+}
+
+.music-info h2 {
+    margin-top: 10px;
+
+    font-size: 30px;
+
+    letter-spacing: 5px;
+}
+
+.music-info p {
+    margin-top: 5px;
+
+    color: rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* PROGRESS */
+
+.music-progress {
+    position: relative;
+
+    width: 100%;
+    height: 3px;
+
+    margin-top: 30px;
+
+    background: rgba(255,255,255,.1);
+
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+
+    background: #00ff73;
+
+    box-shadow:
+        0 0 8px #00ff73;
+
+    transition: width .1s linear;
+}
+
+.music-time {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 8px;
+
+    color: rgba(255,255,255,.35);
+
+    font-size: 8px;
+}
+
+
+/* CONTROLS */
+
+.music-controls {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+.music-controls button {
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid rgba(0,255,100,.25);
+
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.music-controls button:hover {
+    border-color: #00ff73;
+
+    color: #00ff73;
+
+    box-shadow:
+        0 0 15px rgba(0,255,100,.15);
+}
+
+.music-controls .play-button {
+    width: 48px;
+    height: 48px;
+
+    border-color: #00ff73;
+
+    color: #00ff73;
+}
+
+
+/* =========================================
+   MUSIC ANIMATION
+   ========================================= */
+
+@keyframes albumPulse {
+    from {
+        transform: scale(.8);
+        opacity: .15;
+    }
+
+    to {
+        transform: scale(1.2);
+        opacity: .35;
+    }
+}
+
+
+/* =========================================
+   MOBILE SECTIONS
+   ========================================= */
+
+@media (max-width: 650px) {
+
+    .sections {
+        inset: 62px 0 0;
+    }
+
+    .friends-panel,
+    .music-panel {
+        width: 90vw;
+
+        padding: 20px;
+    }
+
+    .friends-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .music-player {
+        flex-direction: column;
+    }
+
+    .album-art {
+        width: 150px;
+        height: 150px;
+    }
+
+    .music-info {
+        width: 100%;
+    }
+}
