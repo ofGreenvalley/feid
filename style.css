@@ -1762,7 +1762,7 @@ footer {
 
 }
 /* =========================================
-   AVATAR — EFECTO MULTIVERSAL
+   AVATAR — GLITCH MULTIVERSAL
    ========================================= */
 
 .avatar {
@@ -1774,8 +1774,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border: 1px solid rgba(0, 255, 100, 0.08);
 
     background: #020604;
 }
@@ -1789,7 +1787,6 @@ footer {
     height: 88%;
 
     object-fit: contain;
-    object-position: center;
 
     display: block;
 
@@ -1802,12 +1799,11 @@ footer {
 
     transform: scale(0.94);
 
-    transition: 0.4s ease;
 }
 
 
 /* =========================================
-   GLITCH MULTIVERSAL
+   COPIA MULTIVERSAL
    ========================================= */
 
 .avatar::before {
@@ -1816,30 +1812,33 @@ footer {
 
     position: absolute;
 
-    inset: 5px;
+    inset: 0;
 
     background:
         linear-gradient(
             90deg,
             transparent 0%,
-            rgba(0, 255, 100, 0.15) 45%,
-            transparent 55%
+            rgba(0, 255, 120, 0.45) 50%,
+            transparent 100%
         );
 
     opacity: 0;
 
     pointer-events: none;
 
-    z-index: 3;
+    z-index: 5;
 
     mix-blend-mode: screen;
 
     animation:
-        multiversalGlitch 3.2s infinite;
+        multiverse 2.4s infinite steps(1);
+
 }
 
 
-/* SEGUNDO DESFASE */
+/* =========================================
+   SEGUNDA DIMENSIÓN
+   ========================================= */
 
 .avatar::after {
 
@@ -1850,76 +1849,74 @@ footer {
     inset: 20px;
 
     background:
-        linear-gradient(
-            90deg,
-            transparent 20%,
-            rgba(0, 255, 100, 0.12) 50%,
-            transparent 80%
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 12px,
+            rgba(0, 255, 100, 0.18) 13px,
+            transparent 15px
         );
 
     opacity: 0;
 
     pointer-events: none;
 
-    z-index: 4;
+    z-index: 6;
 
     mix-blend-mode: screen;
 
     animation:
-        multiversalShift 3.2s infinite;
+        dimensionalShift 2.4s infinite steps(1);
+
 }
 
 
 /* =========================================
-   GLITCH PRINCIPAL
+   GLITCH MULTIVERSAL
    ========================================= */
 
-@keyframes multiversalGlitch {
+@keyframes multiverse {
 
     0%,
-    72%,
+    70%,
     100% {
 
         opacity: 0;
 
         transform:
-            translateX(0)
-            skewX(0);
+            translateX(0);
+
+    }
+
+    71% {
+
+        opacity: 0.8;
+
+        transform:
+            translateX(-12px);
+
+    }
+
+    72% {
+
+        opacity: 0.4;
+
+        transform:
+            translateX(15px);
 
     }
 
     73% {
 
-        opacity: 0.8;
+        opacity: 0.9;
 
         transform:
-            translateX(-7px)
-            skewX(-2deg);
+            translateX(-6px);
 
     }
 
     74% {
 
-        opacity: 0.45;
-
-        transform:
-            translateX(9px)
-            skewX(3deg);
-
-    }
-
-    75% {
-
-        opacity: 0.9;
-
-        transform:
-            translateX(-4px)
-            skewX(-1deg);
-
-    }
-
-    76% {
-
         opacity: 0;
 
         transform:
@@ -1931,58 +1928,59 @@ footer {
 
 
 /* =========================================
-   DESFASE DIMENSIONAL
+   FRAGMENTACIÓN DIMENSIONAL
    ========================================= */
 
-@keyframes multiversalShift {
+@keyframes dimensionalShift {
 
     0%,
-    74%,
+    68%,
     100% {
 
         opacity: 0;
 
         transform:
-            translateX(0)
-            scaleX(1);
+            translate(0, 0)
+            skewX(0);
 
     }
 
-    75% {
+    69% {
 
-        opacity: 0.5;
+        opacity: 0.8;
 
         transform:
-            translateX(8px)
-            scaleX(1.02);
+            translate(-8px, 2px)
+            skewX(-3deg);
 
     }
 
-    76% {
+    70% {
 
-        opacity: 0.25;
+        opacity: 0.3;
 
         transform:
-            translateX(-10px)
-            scaleX(0.98);
+            translate(11px, -2px)
+            skewX(4deg);
 
     }
 
-    77% {
+    71% {
 
-        opacity: 0.6;
+        opacity: 0.7;
 
         transform:
-            translateX(5px);
+            translate(-5px, 1px)
+            skewX(-2deg);
 
     }
 
-    78% {
+    72% {
 
         opacity: 0;
 
         transform:
-            translateX(0);
+            translate(0);
 
     }
 
@@ -1990,7 +1988,7 @@ footer {
 
 
 /* =========================================
-   ESCANEO VERDE
+   LÍNEAS DE ESCANEO
    ========================================= */
 
 .avatar-frame::after {
@@ -2007,17 +2005,17 @@ footer {
     top: -5px;
 
     background:
-        rgba(0, 255, 100, 0.35);
+        rgba(0, 255, 100, 0.45);
 
     box-shadow:
-        0 0 12px rgba(0, 255, 100, 0.5);
+        0 0 15px rgba(0, 255, 100, 0.7);
 
-    opacity: 0.35;
+    opacity: 0.4;
 
     pointer-events: none;
 
     animation:
-        avatarScan 4s linear infinite;
+        avatarScan 3.5s linear infinite;
 
 }
 
