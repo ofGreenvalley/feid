@@ -121,3 +121,56 @@ button:hover {
     }
 
 }
+/* GLITCH SUTIL DE LATVERIA */
+
+.intro {
+    position: relative;
+    overflow: hidden;
+}
+
+.intro::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: inherit;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    animation: glitchLatveria 7s infinite;
+}
+
+@keyframes glitchLatveria {
+
+    0%,
+    91%,
+    100% {
+        opacity: 0;
+        transform: translate(0);
+        filter: none;
+    }
+
+    92% {
+        opacity: 0.12;
+        transform: translate(-2px, 1px);
+        filter: hue-rotate(20deg);
+    }
+
+    93% {
+        opacity: 0.05;
+        transform: translate(2px, -1px);
+        filter: hue-rotate(-20deg);
+    }
+
+    94% {
+        opacity: 0.1;
+        transform: translate(-1px, 0);
+    }
+
+    95% {
+        opacity: 0;
+        transform: translate(0);
+    }
+}
