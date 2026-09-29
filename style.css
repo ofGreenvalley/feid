@@ -1762,46 +1762,84 @@ footer {
 
 }
 /* =========================================
-   AVATAR REAL
+   AVATAR — EFECTO MULTIVERSAL
    ========================================= */
 
 .avatar {
+    position: absolute;
+    inset: 20px;
+
     overflow: hidden;
-    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(0, 255, 100, 0.08);
+
+    background: #020604;
 }
+
+
+/* IMAGEN PRINCIPAL */
 
 .avatar img {
 
-    width: 100%;
-    height: 100%;
+    width: 78%;
+    height: 88%;
 
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
 
     display: block;
 
-    filter:
-        contrast(1.05)
-        brightness(0.9);
-
-    transition:
-        transform 0.6s ease,
-        filter 0.6s ease;
-}
-
-.avatar:hover img {
-
-    transform: scale(1.04);
+    opacity: 0.58;
 
     filter:
-        contrast(1.1)
-        brightness(1);
+        brightness(0.75)
+        contrast(1.15)
+        saturate(0.65);
+
+    transform: scale(0.94);
+
+    transition: 0.4s ease;
 }
 
 
 /* =========================================
-   BRILLO SOBRE EL AVATAR
+   GLITCH MULTIVERSAL
    ========================================= */
+
+.avatar::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(0, 255, 100, 0.15) 45%,
+            transparent 55%
+        );
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 3;
+
+    mix-blend-mode: screen;
+
+    animation:
+        multiversalGlitch 3.2s infinite;
+}
+
+
+/* SEGUNDO DESFASE */
 
 .avatar::after {
 
@@ -1809,59 +1847,189 @@ footer {
 
     position: absolute;
 
-    inset: 0;
-
-    pointer-events: none;
+    inset: 20px;
 
     background:
         linear-gradient(
-            120deg,
-            transparent 35%,
-            rgba(0, 255, 100, 0.08) 50%,
-            transparent 65%
+            90deg,
+            transparent 20%,
+            rgba(0, 255, 100, 0.12) 50%,
+            transparent 80%
         );
 
-    transform:
-        translateX(-100%);
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 4;
+
+    mix-blend-mode: screen;
 
     animation:
-        avatarScan 5s infinite;
+        multiversalShift 3.2s infinite;
 }
 
 
-@keyframes avatarScan {
+/* =========================================
+   GLITCH PRINCIPAL
+   ========================================= */
 
-    0% {
-        transform: translateX(-100%);
-    }
+@keyframes multiversalGlitch {
 
-    25% {
-        transform: translateX(100%);
-    }
-
+    0%,
+    72%,
     100% {
-        transform: translateX(100%);
+
+        opacity: 0;
+
+        transform:
+            translateX(0)
+            skewX(0);
+
+    }
+
+    73% {
+
+        opacity: 0.8;
+
+        transform:
+            translateX(-7px)
+            skewX(-2deg);
+
+    }
+
+    74% {
+
+        opacity: 0.45;
+
+        transform:
+            translateX(9px)
+            skewX(3deg);
+
+    }
+
+    75% {
+
+        opacity: 0.9;
+
+        transform:
+            translateX(-4px)
+            skewX(-1deg);
+
+    }
+
+    76% {
+
+        opacity: 0;
+
+        transform:
+            translateX(0);
+
     }
 
 }
 
 
 /* =========================================
-   FEID CENTRADO
+   DESFASE DIMENSIONAL
    ========================================= */
 
-.topbar {
+@keyframes multiversalShift {
 
-    justify-content: center;
+    0%,
+    74%,
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateX(0)
+            scaleX(1);
+
+    }
+
+    75% {
+
+        opacity: 0.5;
+
+        transform:
+            translateX(8px)
+            scaleX(1.02);
+
+    }
+
+    76% {
+
+        opacity: 0.25;
+
+        transform:
+            translateX(-10px)
+            scaleX(0.98);
+
+    }
+
+    77% {
+
+        opacity: 0.6;
+
+        transform:
+            translateX(5px);
+
+    }
+
+    78% {
+
+        opacity: 0;
+
+        transform:
+            translateX(0);
+
+    }
 
 }
 
-.brand {
 
-    position: relative;
+/* =========================================
+   ESCANEO VERDE
+   ========================================= */
 
-    left: auto;
+.avatar-frame::after {
 
-    transform: none;
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    height: 2px;
+
+    top: -5px;
+
+    background:
+        rgba(0, 255, 100, 0.35);
+
+    box-shadow:
+        0 0 12px rgba(0, 255, 100, 0.5);
+
+    opacity: 0.35;
+
+    pointer-events: none;
+
+    animation:
+        avatarScan 4s linear infinite;
+
+}
+
+
+@keyframes avatarScan {
+
+    from {
+        top: -5px;
+    }
+
+    to {
+        top: 100%;
+    }
 
 }
