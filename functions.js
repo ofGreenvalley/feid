@@ -1,7 +1,6 @@
 const start = document.getElementById("start");
 
 const intro = document.getElementById("intro");
-
 const home = document.getElementById("home");
 
 const menuButton =
@@ -12,37 +11,38 @@ const menuOptions =
 
 
 /* =========================
-   ENTRAR
+   ENTRAR AL XATSPACE
    ========================= */
 
 start.addEventListener("click", function () {
 
-    intro.style.opacity = "0";
+    // Activar transición
+    intro.classList.add("entering");
 
     setTimeout(function () {
 
+        // Ocultar completamente Latveria
         intro.style.display = "none";
 
-        home.style.opacity = "1";
+        // Mostrar HOME
+        home.classList.add("visible");
 
         home.style.pointerEvents = "auto";
 
-    }, 1000);
+    }, 1200);
 
 });
 
 
 /* =========================
-   MENÚ
+   MENÚ FEID
    ========================= */
 
 menuButton.addEventListener(
     "click",
     function () {
 
-        menuOptions.classList.toggle(
-            "active"
-        );
+        menuOptions.classList.toggle("active");
 
     }
 );
