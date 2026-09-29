@@ -3029,3 +3029,81 @@ body {
     }
 
 }
+/* GLITCH FUERTE */
+
+.multiverse-screen.heavy-glitch {
+    animation:
+        screenShake .12s steps(2, end);
+}
+
+.multiverse-screen.heavy-glitch::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 20;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 2px,
+            rgba(0,255,130,.18) 3px,
+            transparent 4px
+        );
+
+    mix-blend-mode: screen;
+
+    animation:
+        heavyGlitch .18s steps(2, end);
+}
+
+@keyframes screenShake {
+
+    0% {
+        transform: translate(0);
+    }
+
+    25% {
+        transform: translate(-3px, 1px);
+    }
+
+    50% {
+        transform: translate(3px, -1px);
+    }
+
+    75% {
+        transform: translate(-2px, -1px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+
+}
+
+@keyframes heavyGlitch {
+
+    0% {
+        clip-path: inset(10% 0 70% 0);
+    }
+
+    25% {
+        clip-path: inset(60% 0 15% 0);
+    }
+
+    50% {
+        clip-path: inset(35% 0 40% 0);
+    }
+
+    75% {
+        clip-path: inset(75% 0 5% 0);
+    }
+
+    100% {
+        clip-path: inset(0);
+    }
+
+}
