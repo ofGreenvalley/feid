@@ -114,7 +114,327 @@
              CENTRO
              ========================= -->
 
-        <section class="central">
+        <!-- =========================
+     MENÚ
+     ========================= -->
+
+<nav class="menu">
+
+    <button
+        class="menu-main"
+        id="menuButton"
+    >
+        MENU
+        <span>+</span>
+    </button>
+
+    <div
+        class="menu-options"
+        id="menuOptions"
+    >
+
+        <button data-section="home">
+            HOME
+        </button>
+
+        <button data-section="friends">
+            FRIENDS
+        </button>
+
+        <button data-section="music">
+            MUSIC
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     CONTENIDO
+     ========================= -->
+
+<section class="sections">
+
+
+    <!-- =====================
+         HOME
+         ===================== -->
+
+    <div
+        class="section active"
+        id="section-home"
+    >
+
+        <div class="central">
+
+            <!-- AVATAR -->
+
+            <div class="avatar-container">
+
+                <div class="avatar-frame">
+
+                    <div class="corner top-left"></div>
+                    <div class="corner top-right"></div>
+                    <div class="corner bottom-left"></div>
+                    <div class="corner bottom-right"></div>
+
+                    <div class="avatar">
+
+                        <img
+                            src="https://u.cubeupload.com/Eradicater/eedb771df5045f58db69.jpg"
+                            alt="Avatar"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MULTIVERSE CORE -->
+
+            <div class="universe-panel">
+
+                <div class="panel-header">
+
+                    <span>MULTIVERSE CORE</span>
+
+                    <span class="panel-status">
+                        ● UNSTABLE
+                    </span>
+
+                </div>
+
+                <div class="screen multiverse-screen">
+
+                    <div class="space-noise"></div>
+
+                    <div class="reality reality-one">
+                        <span>REALITY_01</span>
+                    </div>
+
+                    <div class="reality reality-two">
+                        <span>REALITY_07</span>
+                    </div>
+
+                    <div class="reality reality-three">
+                        <span>REALITY_∞</span>
+                    </div>
+
+                    <div class="core">
+
+                        <div class="core-ring ring-one"></div>
+                        <div class="core-ring ring-two"></div>
+                        <div class="core-ring ring-three"></div>
+
+                        <div class="core-energy"></div>
+
+                    </div>
+
+                    <div class="core-particles">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <div class="glitch-bar glitch-one"></div>
+                    <div class="glitch-bar glitch-two"></div>
+                    <div class="glitch-bar glitch-three"></div>
+
+                    <div class="screen-scanline"></div>
+
+                    <div class="signal-glitch"></div>
+
+                </div>
+
+                <div class="panel-footer">
+
+                    <span>
+                        REALITIES: 1,248,672
+                    </span>
+
+                    <span>
+                        STABILITY: 12.6%
+                    </span>
+
+                    <span>
+                        CONTAINMENT: BREACHING...
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================
+         FRIENDS
+         ===================== -->
+
+    <div
+        class="section"
+        id="section-friends"
+    >
+
+        <div class="friends-panel">
+
+            <div class="section-title">
+                <span>FRIENDS</span>
+                <small>NETWORK // ONLINE</small>
+            </div>
+
+            <div class="friends-grid">
+
+                <div class="friend-card">
+                    <div class="friend-avatar">01</div>
+                    <div>
+                        <strong>FRIEND_01</strong>
+                        <small>● ONLINE</small>
+                    </div>
+                </div>
+
+                <div class="friend-card">
+                    <div class="friend-avatar">02</div>
+                    <div>
+                        <strong>FRIEND_02</strong>
+                        <small>● ONLINE</small>
+                    </div>
+                </div>
+
+                <div class="friend-card">
+                    <div class="friend-avatar">03</div>
+                    <div>
+                        <strong>FRIEND_03</strong>
+                        <small>● OFFLINE</small>
+                    </div>
+                </div>
+
+                <div class="friend-card">
+                    <div class="friend-avatar">04</div>
+                    <div>
+                        <strong>FRIEND_04</strong>
+                        <small>● ONLINE</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================
+         MUSIC
+         ===================== -->
+
+    <div
+        class="section"
+        id="section-music"
+    >
+
+        <div class="music-panel">
+
+            <div class="section-title">
+                <span>FEID // MUSIC</span>
+                <small>NOW PLAYING</small>
+            </div>
+
+
+            <div class="music-player">
+
+                <div class="album-art">
+
+                    <div class="album-glow"></div>
+
+                    <span>FEID</span>
+
+                </div>
+
+
+                <div class="music-info">
+
+                    <div class="music-label">
+                        CURRENT TRANSMISSION
+                    </div>
+
+                    <h2>FEID</h2>
+
+                    <p>
+                        MULTIVERSE RADIO
+                    </p>
+
+
+                    <div class="music-progress">
+
+                        <div
+                            class="progress-bar"
+                            id="progressBar"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="music-time">
+
+                        <span id="currentTime">
+                            00:00
+                        </span>
+
+                        <span>
+                            03:30
+                        </span>
+
+                    </div>
+
+
+                    <div class="music-controls">
+
+                        <button id="previous">
+                            ◀
+                        </button>
+
+                        <button
+                            class="play-button"
+                            id="playButton"
+                        >
+                            ▶
+                        </button>
+
+                        <button id="next">
+                            ▶
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- AUDIO
+                 Ponemos el archivo después -->
+            <audio id="audioPlayer"></audio>
+
+        </div>
+
+    </div>
+
+</section>
 
 
             <!-- AVATAR -->
