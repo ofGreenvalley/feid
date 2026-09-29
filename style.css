@@ -29,9 +29,11 @@ body {
         ),
         url("https://u.cubeupload.com/Eradicater/file00000000b36081f5.png");
 
-    background-size: cover;
+    background-size: 110%;
     background-position: center;
     background-repeat: no-repeat;
+
+    animation: latveria 18s ease-in-out infinite alternate;
 }
 
 /* CONTENIDO */
@@ -103,6 +105,19 @@ button:hover {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+
+}
+@keyframes latveria {
+
+    from {
+        background-size: 110%;
+        background-position: center;
+    }
+
+    to {
+        background-size: 120%;
+        background-position: center;
     }
 
 }
