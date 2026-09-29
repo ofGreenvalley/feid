@@ -897,9 +897,9 @@ body {
 
 .avatar img {
 
-    width: 90%;
+    width: 100%;
 
-    height: 94%;
+    height: 105%;
 
     object-fit: contain;
 
