@@ -44,3 +44,36 @@ menuButton.addEventListener(
 
     }
 );
+
+/* =========================================
+   MULTIVERSE CORE GLITCH
+   ========================================= */
+
+const multiverseScreen =
+    document.querySelector(".multiverse-screen");
+
+if (multiverseScreen) {
+
+    function multiverseGlitch() {
+
+        multiverseScreen.classList.add("heavy-glitch");
+
+        setTimeout(function () {
+
+            multiverseScreen.classList.remove(
+                "heavy-glitch"
+            );
+
+        }, 120 + Math.random() * 220);
+
+    }
+
+    setInterval(function () {
+
+        if (Math.random() > 0.35) {
+            multiverseGlitch();
+        }
+
+    }, 2500);
+
+}
