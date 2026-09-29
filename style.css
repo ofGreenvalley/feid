@@ -2031,3 +2031,237 @@ footer {
     }
 
 }
+/* =========================================
+   PLANETARY COLLISION — EFECTO DIMENSIONAL
+   ========================================= */
+
+.screen {
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(0, 255, 100, 0.08),
+            transparent 35%
+        ),
+        #010503;
+
+    box-shadow:
+        inset 0 0 50px rgba(0, 255, 100, 0.08),
+        0 0 25px rgba(0, 255, 100, 0.08);
+}
+
+
+/* =========================================
+   ONDA DE IMPACTO
+   ========================================= */
+
+.collision::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    border:
+        1px solid
+        rgba(100, 255, 160, 0.8);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 15px rgba(0, 255, 100, 0.5);
+
+    animation:
+        shockwave 3.8s infinite;
+}
+
+
+@keyframes shockwave {
+
+    0%,
+    45% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+    }
+
+    52% {
+
+        opacity: 0.9;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+    }
+
+    65% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(8);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   DESTELLO DEL IMPACTO
+   ========================================= */
+
+.collision::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        #caffdc;
+
+    box-shadow:
+
+        0 0 8px #00ff66,
+        0 0 20px #00ff66,
+        0 0 40px rgba(0, 255, 100, 0.7);
+
+    animation:
+        impactFlash 3.8s infinite;
+
+}
+
+
+@keyframes impactFlash {
+
+    0%,
+    48% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+    }
+
+    52% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(3);
+
+    }
+
+    58% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   DISTORSIÓN DEL ESPACIO
+   ========================================= */
+
+.screen::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            transparent 0%,
+            transparent 30%,
+            rgba(0, 255, 100, 0.05) 50%,
+            transparent 70%
+        );
+
+    animation:
+        spaceDistortion 3.8s infinite;
+
+}
+
+
+@keyframes spaceDistortion {
+
+    0%,
+    45%,
+    100% {
+
+        opacity: 0;
+
+        transform:
+            scale(1);
+
+    }
+
+    52% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.05);
+
+    }
+
+    65% {
+
+        opacity: 0;
+
+        transform:
+            scale(1.25);
+
+    }
+
+}
