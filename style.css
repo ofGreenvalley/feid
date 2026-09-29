@@ -121,25 +121,26 @@ button:hover {
     }
 
 }
-/* =========================
-   GLITCH LATVERIA
-   ========================= */
+/* =================================
+   GLITCH VERDE — DOOM / LATVERIA
+   ================================= */
 
 .intro {
     position: relative;
     overflow: hidden;
 }
 
-/* Copia del fondo */
+/* CAPA DE DISTORSIÓN */
+
 .intro::after {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: -5px;
 
     background-image:
         linear-gradient(
-            rgba(0, 0, 0, 0.55),
-            rgba(0, 0, 0, 0.65)
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.55)
         ),
         url("https://u.cubeupload.com/Eradicater/file00000000b36081f5.png");
 
@@ -153,10 +154,11 @@ button:hover {
 
     z-index: 1;
 
-    animation: glitchFondo 5s infinite;
+    animation: glitchFondo 2.8s infinite;
 }
 
-/* Líneas horizontales */
+
+/* LÍNEAS VERDES */
 
 .intro::before {
     content: "";
@@ -164,87 +166,137 @@ button:hover {
     position: absolute;
     inset: 0;
 
-    z-index: 2;
-
     pointer-events: none;
 
-    background: repeating-linear-gradient(
-        0deg,
-        transparent 0px,
-        transparent 5px,
-        rgba(100, 255, 150, 0.15) 6px,
-        transparent 7px
-    );
+    z-index: 2;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 4px,
+            rgba(0, 255, 100, 0.20) 5px,
+            rgba(0, 255, 100, 0.08) 6px,
+            transparent 7px
+        );
 
     opacity: 0;
 
-    animation: glitchLineas 5s infinite;
+    animation: glitchLineas 2.8s infinite;
 }
 
 
-/* GLITCH DE LA IMAGEN */
+/* =================================
+   DISTORSIÓN
+   ================================= */
 
 @keyframes glitchFondo {
 
     0%,
-    88%,
+    65%,
     100% {
         opacity: 0;
-        transform: translateX(0);
+        transform: translate(0);
         filter: none;
     }
 
-    89% {
+    /* PRIMER DESTELLO */
+
+    66% {
+        opacity: 0.65;
+        transform: translate(-10px, 2px);
+
+        filter:
+            hue-rotate(70deg)
+            saturate(1.8)
+            contrast(1.4);
+    }
+
+    /* SEGUNDO DESPLAZAMIENTO */
+
+    67% {
         opacity: 0.45;
-        transform: translateX(-7px);
-        filter: hue-rotate(35deg);
+        transform: translate(12px, -2px);
+
+        filter:
+            hue-rotate(110deg)
+            saturate(2);
     }
 
-    90% {
-        opacity: 0.25;
-        transform: translateX(7px);
-        filter: hue-rotate(-35deg);
+    /* TERCER GOLPE */
+
+    68% {
+        opacity: 0.75;
+        transform: translate(-6px, 1px);
+
+        filter:
+            hue-rotate(75deg)
+            saturate(2.5)
+            contrast(1.5);
     }
 
-    91% {
-        opacity: 0.4;
-        transform: translateX(-4px);
-        filter: contrast(1.3);
+    /* MICRO PARPADEO */
+
+    69% {
+        opacity: 0.2;
+        transform: translate(4px, 0);
     }
 
-    92% {
+    70% {
+        opacity: 0.55;
+        transform: translate(-3px, 0);
+
+        filter:
+            hue-rotate(100deg)
+            saturate(2);
+    }
+
+    71% {
         opacity: 0;
-        transform: translateX(0);
+        transform: translate(0);
     }
 }
 
 
-/* GLITCH DE LAS LÍNEAS */
+/* =================================
+   LÍNEAS VERDES
+   ================================= */
 
 @keyframes glitchLineas {
 
     0%,
-    87%,
+    64%,
     100% {
         opacity: 0;
+        transform: translateX(0);
     }
 
-    88% {
+    65% {
+        opacity: 0.55;
+        transform: translateX(-8px);
+    }
+
+    66% {
+        opacity: 0.8;
+        transform: translateX(10px);
+    }
+
+    67% {
         opacity: 0.45;
-        transform: translateX(-5px);
+        transform: translateX(-6px);
     }
 
-    89% {
-        opacity: 0.25;
+    68% {
+        opacity: 0.7;
         transform: translateX(5px);
     }
 
-    90% {
-        opacity: 0.4;
+    69% {
+        opacity: 0.3;
         transform: translateX(-3px);
     }
 
-    91% {
+    70% {
         opacity: 0;
         transform: translateX(0);
     }
