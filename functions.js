@@ -1,35 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
+const start = document.getElementById("start");
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+const intro = document.getElementById("intro");
 
-    <title>FEID</title>
+const home = document.getElementById("home");
 
-    <link rel="stylesheet" href="style.css">
-</head>
+const menuButton =
+    document.getElementById("menuButton");
 
-<body>
+const menuOptions =
+    document.getElementById("menuOptions");
 
-    <div class="intro">
 
-        <div class="content">
+/* =========================
+   ENTRAR
+   ========================= */
 
-            <h1>FEID</h1>
+start.addEventListener("click", function () {
 
-            <p>הגיהינום מציית לי, כי אני דום</p>
+    intro.style.opacity = "0";
 
-            <button id="start">
-                INICIAR
-            </button>
+    setTimeout(function () {
 
-        </div>
+        intro.style.display = "none";
 
-    </div>
+        home.style.opacity = "1";
 
-    <script src="functions.js"></script>
+        home.style.pointerEvents = "auto";
 
-</body>
+    }, 1000);
 
-</html>
+});
+
+
+/* =========================
+   MENÚ
+   ========================= */
+
+menuButton.addEventListener(
+    "click",
+    function () {
+
+        menuOptions.classList.toggle(
+            "active"
+        );
+
+    }
+);
