@@ -1,35 +1,108 @@
-<!DOCTYPE html>
-<html lang="es">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+body {
+    background: #050505;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
 
-    <title>FEID</title>
+/* FONDO */
+.intro {
+    width: 100%;
+    min-height: 100vh;
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-<body>
+    text-align: center;
 
-    <div class="intro">
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.65)
+        ),
+        url("https://u.cubeupload.com/Eradicater/file00000000b36081f5.png");
 
-        <div class="content">
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-            <h1>FEID</h1>
+/* CONTENIDO */
 
-            <p>הגיהינום מציית לי, כי אני דום</p>
+.content {
+    animation: aparecer 2s ease;
+}
 
-            <button id="start">
-                INICIAR
-            </button>
+/* TITULO */
 
-        </div>
+h1 {
+    font-size: 80px;
+    font-weight: 300;
 
-    </div>
+    letter-spacing: 20px;
+    margin-left: 20px;
 
-    <script src="functions.js"></script>
+    text-shadow:
+        0 0 20px rgba(255, 255, 255, 0.15);
+}
 
-</body>
+/* FRASE */
 
-</html>
+p {
+    margin-top: 20px;
+
+    color: #aaa;
+
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+/* BOTON */
+
+button {
+    margin-top: 40px;
+
+    padding: 12px 35px;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    color: white;
+
+    border: 1px solid #666;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+}
+
+button:hover {
+    background: white;
+    color: black;
+
+    border-color: white;
+}
+
+/* ANIMACION */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
