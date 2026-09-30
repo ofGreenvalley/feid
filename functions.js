@@ -3,17 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const pressButton =
         document.getElementById("pressButton");
 
-    if (pressButton) {
-
-        pressButton.addEventListener("click", function () {
-
-            document.body.classList.add("leaving");
-
-        });
-
-    }
-
-
     const avatarButton =
         document.getElementById("avatarButton");
 
@@ -37,6 +26,44 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("musicPanel");
 
 
+    const playerButton =
+        document.getElementById("playerButton");
+
+    const audio =
+        document.getElementById("audioPlayer");
+
+    const progressBar =
+        document.getElementById("progressBar");
+
+    const progressFill =
+        document.getElementById("progressFill");
+
+    const currentTime =
+        document.getElementById("currentTime");
+
+    const duration =
+        document.getElementById("duration");
+
+
+    /* =========================
+       INICIAR
+    ========================== */
+
+    if (pressButton) {
+
+        pressButton.addEventListener("click", function () {
+
+            document.body.classList.add("leaving");
+
+        });
+
+    }
+
+
+    /* =========================
+       CERRAR PANELES
+    ========================== */
+
     function closePanels() {
 
         if (messagePanel) {
@@ -54,7 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* AVATAR */
+    /* =========================
+       AVATAR
+    ========================== */
 
     if (avatarButton) {
 
@@ -79,7 +108,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* AMIGOS */
+    /* =========================
+       AMIGOS
+    ========================== */
 
     if (friendsButton) {
 
@@ -104,7 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* MÚSICA */
+    /* =========================
+       MÚSICA
+    ========================== */
 
     if (musicButton) {
 
@@ -129,7 +162,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* + */
+    /* =========================
+       BOTÓN +
+    ========================== */
 
     if (plusButton) {
 
@@ -144,7 +179,176 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* CERRAR PANELES */
+    /* =========================
+       PLAY / PAUSE
+    ========================== */
+
+    if (playerButton && audio) {
+
+        playerButton.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+
+            if (audio.paused) {
+
+                audio.play()
+                    .then(function () {
+
+                        playerButton.textContent = "❚❚";
+
+                    })
+                    .catch(function (error) {
+
+                        console.log(
+                            "No se pudo reproducir el audio:",
+                            error
+                        );
+
+                    });
+
+            } else {
+
+                audio.pause();
+
+                playerButton.textContent = "▶";
+
+            }
+
+        });
+
+
+        /* =========================
+           PLAY
+        ========================== */
+
+        audio.addEventListener("play", function () {
+
+            playerButton.textContent = "❚❚";
+
+        });
+
+
+        /* =========================
+           PAUSE
+        ========================== */
+
+        audio.addEventListener("pause", function () {
+
+            playerButton.textContent = "▶";
+
+        });
+
+
+        /* =========================
+           DURACIÓN
+        ========================== */
+
+        audio.addEventListener("loadedmetadata", function () {
+
+            if (duration) {
+
+                duration.textContent =
+                    formatTime(audio.duration);
+
+            }
+
+        });
+
+
+        /* =========================
+           PROGRESO
+        ========================== */
+
+        audio.addEventListener("timeupdate", function () {
+
+            if (!audio.duration) {
+                return;
+            }
+
+
+            const percentage =
+                (audio.currentTime / audio.duration) * 100;
+
+
+            if (progressFill) {
+
+                progressFill.style.width =
+                    percentage + "%";
+
+            }
+
+
+            if (currentTime) {
+
+                currentTime.textContent =
+                    formatTime(audio.currentTime);
+
+            }
+
+        });
+
+
+        /* =========================
+           FIN DE LA CANCIÓN
+        ========================== */
+
+        audio.addEventListener("ended", function () {
+
+            playerButton.textContent = "▶";
+
+
+            if (progressFill) {
+
+                progressFill.style.width = "0%";
+
+            }
+
+
+            if (currentTime) {
+
+                currentTime.textContent = "0:00";
+
+            }
+
+        });
+
+
+        /* =========================
+           BARRA DE PROGRESO
+        ========================== */
+
+        if (progressBar) {
+
+            progressBar.addEventListener("click", function (event) {
+
+                if (!audio.duration) {
+                    return;
+                }
+
+
+                const rect =
+                    progressBar.getBoundingClientRect();
+
+
+                const position =
+                    (event.clientX - rect.left) /
+                    rect.width;
+
+
+                audio.currentTime =
+                    position * audio.duration;
+
+            });
+
+        }
+
+    }
+
+
+    /* =========================
+       CERRAR PANELES
+    ========================== */
 
     document.addEventListener("click", function (event) {
 
@@ -159,5 +363,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
     });
+
+
+    /* =========================
+       FORMATO DE TIEMPO
+    ========================== */
+
+    function formatTime(seconds) {
+
+        if (!seconds || isNaN(seconds)) {
+
+            return "0:00";
+
+        }
+
+
+        seconds =
+            Math.floor(seconds);
+
+
+        const minutes =
+            Math.floor(seconds / 60);
+
+
+        const remaining =
+            seconds % 60;
+
+
+        return (
+            minutes +
+            ":" +
+            String(remaining).padStart(2, "0")
+        );
+
+    }
 
 });
