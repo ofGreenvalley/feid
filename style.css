@@ -32,6 +32,7 @@ body {
 .entry-image {
     position: absolute;
     inset: 0;
+    z-index: 1;
 
     background-image:
         url("https://u.cubeupload.com/Eradicater/file000000007d7081f5.png");
@@ -52,23 +53,26 @@ body {
 
 
 /* =========================
-   CAPA TV
+   TELEVISIÓN CRT
 ========================= */
 
 .tv-effect {
     position: absolute;
     inset: 0;
 
-    z-index: 3;
+    z-index: 5;
 
     pointer-events: none;
 
     overflow: hidden;
+
+    /* MUY IMPORTANTE */
+    mix-blend-mode: normal;
 }
 
 
 /* =========================
-   LÍNEAS CRT
+   SCANLINES
 ========================= */
 
 .tv-scanlines {
@@ -78,41 +82,40 @@ body {
     background:
         repeating-linear-gradient(
             to bottom,
-            rgba(255,255,255,.12) 0px,
-            rgba(255,255,255,.12) 1px,
-            rgba(0,0,0,.20) 2px,
-            rgba(0,0,0,.20) 4px
+            rgba(255,255,255,.16) 0px,
+            rgba(255,255,255,.16) 1px,
+            rgba(0,0,0,.28) 2px,
+            rgba(0,0,0,.28) 4px
         );
 
-    opacity: .65;
+    opacity: .8;
 
     animation:
-        scanMove .12s linear infinite;
+        scanMove .09s linear infinite;
 }
 
 
 /* =========================
-   RUIDO DE TELEVISIÓN
+   RUIDO
 ========================= */
 
 .tv-noise {
     position: absolute;
-
-    inset: -50%;
+    inset: -100%;
 
     background:
         repeating-radial-gradient(
-            circle,
-            rgba(255,255,255,.10) 0px,
-            rgba(255,255,255,.10) 1px,
+            circle at 50% 50%,
+            rgba(255,255,255,.16) 0px,
+            rgba(255,255,255,.16) 1px,
             transparent 2px,
-            transparent 5px
+            transparent 4px
         );
 
-    opacity: .13;
+    opacity: .18;
 
     animation:
-        noiseMove .15s steps(2) infinite;
+        noiseMove .12s steps(2) infinite;
 }
 
 
@@ -122,58 +125,76 @@ body {
 
 .tv-glitch {
     position: absolute;
-
     inset: 0;
 
     background:
-        linear-gradient(
-            transparent 0%,
-            transparent 38%,
-            rgba(255,255,255,.10) 38.2%,
-            transparent 38.6%,
-            transparent 62%,
-            rgba(255,255,255,.08) 62.2%,
-            transparent 62.7%,
-            transparent 81%,
-            rgba(255,255,255,.12) 81.2%,
-            transparent 81.6%
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 72px,
+            rgba(255,255,255,.12) 73px,
+            transparent 76px,
+            transparent 140px
         );
 
-    opacity: .65;
+    opacity: .8;
 
     animation:
-        glitchTV 2.8s infinite steps(1);
+        glitchTV 2.2s infinite steps(1);
 }
 
 
 /* =========================
-   PARPADEO
+   FLASH DE SEÑAL
 ========================= */
 
 .tv-flicker {
     position: absolute;
-
     inset: 0;
 
-    background: #fff;
+    background:
+        rgba(255,255,255,.10);
 
     opacity: 0;
 
     animation:
-        flicker 3.5s infinite steps(1);
+        flicker 2.8s infinite steps(1);
 }
 
 
 /* =========================
-   CINEMÁTICO
+   DISTORSIÓN LATERAL
+========================= */
+
+.tv-effect::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,0,0,.055),
+            transparent 25%,
+            transparent 75%,
+            rgba(0,255,255,.055)
+        );
+
+    animation:
+        chroma 3s infinite steps(1);
+}
+
+
+/* =========================
+   EFECTO CINEMÁTICO
 ========================= */
 
 .cinematic {
     position: absolute;
-
     inset: 0;
 
-    z-index: 4;
+    z-index: 6;
 
     pointer-events: none;
 
@@ -181,13 +202,13 @@ body {
         radial-gradient(
             ellipse at center,
             transparent 35%,
-            rgba(0,0,0,.20) 68%,
+            rgba(0,0,0,.18) 68%,
             rgba(0,0,0,.82) 100%
         ),
 
         linear-gradient(
             180deg,
-            rgba(0,0,0,.20),
+            rgba(0,0,0,.18),
             transparent 40%,
             rgba(0,0,0,.45)
         );
@@ -195,30 +216,27 @@ body {
 
 
 /* =========================
-   BOTÓN INICIAR
+   BOTÓN
 ========================= */
 
 .press {
     position: absolute;
 
-    z-index: 10;
+    z-index: 20;
 
     left: 50%;
     bottom: 8vh;
 
     transform: translateX(-50%);
 
-    width: 110px;
-    height: 34px;
+    width: 105px;
+    height: 32px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,.8);
 
     border-radius: 0;
 
-    background:
-        rgba(0,0,0,.40);
+    background: rgba(0,0,0,.55);
 
     color: #fff;
 
@@ -229,15 +247,16 @@ body {
 
     font-size: 10px;
 
-    letter-spacing: .30em;
-    text-indent: .30em;
+    font-weight: 400;
+
+    letter-spacing: .28em;
+    text-indent: .28em;
 
     cursor: pointer;
 
-    opacity: 0;
+    -webkit-tap-highlight-color: transparent;
 
-    animation:
-        buttonIn 1.5s 2s ease forwards;
+    opacity: 1;
 
     transition:
         background .25s ease,
@@ -246,16 +265,24 @@ body {
 }
 
 
+/* =========================
+   BOTÓN HOVER
+========================= */
+
 .press:hover {
 
     background:
         rgba(255,255,255,.10);
 
     box-shadow:
-        0 0 20px
+        0 0 18px
         rgba(255,255,255,.18);
 }
 
+
+/* =========================
+   BOTÓN CLICK
+========================= */
 
 .press:active {
 
@@ -266,18 +293,19 @@ body {
 
 
 /* =========================
-   ANIMACIONES
+   ANIMACIÓN IMAGEN
 ========================= */
 
 @keyframes imageStart {
 
     0% {
         opacity: 0;
+
         filter:
             grayscale(1)
-            brightness(.15)
+            brightness(.12)
             contrast(1.5)
-            blur(6px);
+            blur(7px);
 
         transform:
             scale(1.06);
@@ -298,17 +326,32 @@ body {
 }
 
 
+/* =========================
+   SCANLINES
+========================= */
+
 @keyframes scanMove {
 
-    from {
-        transform: translateY(0);
+    0% {
+        transform:
+            translateY(0);
     }
 
-    to {
-        transform: translateY(4px);
+    50% {
+        transform:
+            translateY(2px);
+    }
+
+    100% {
+        transform:
+            translateY(4px);
     }
 }
 
+
+/* =========================
+   RUIDO
+========================= */
 
 @keyframes noiseMove {
 
@@ -319,17 +362,17 @@ body {
 
     25% {
         transform:
-            translate(2%,-1%);
+            translate(-3%,2%);
     }
 
     50% {
         transform:
-            translate(-2%,2%);
+            translate(3%,-2%);
     }
 
     75% {
         transform:
-            translate(1%,1%);
+            translate(-2%,-1%);
     }
 
     100% {
@@ -339,68 +382,90 @@ body {
 }
 
 
+/* =========================
+   GLITCH
+========================= */
+
 @keyframes glitchTV {
 
     0%,
-    72%,
+    70%,
     100% {
-        transform:
-            translateX(0)
-            skewX(0);
-    }
-
-    73% {
-        transform:
-            translateX(-10px)
-            skewX(-1deg);
-    }
-
-    74% {
-        transform:
-            translateX(14px)
-            skewX(1deg);
-    }
-
-    75% {
-        transform:
-            translateX(-5px);
-    }
-
-    76% {
         transform:
             translateX(0);
     }
 
-    91% {
+    71% {
         transform:
-            translateX(5px);
+            translateX(-18px)
+            skewX(-2deg);
     }
 
-    92% {
+    72% {
+        transform:
+            translateX(22px)
+            skewX(2deg);
+    }
+
+    73% {
+        transform:
+            translateX(-12px);
+    }
+
+    74% {
+        transform:
+            translateX(8px);
+    }
+
+    75% {
+        transform:
+            translateX(0);
+    }
+
+    88% {
+        transform:
+            translateX(0);
+    }
+
+    89% {
+        transform:
+            translateX(10px);
+    }
+
+    90% {
+        transform:
+            translateX(-6px);
+    }
+
+    91% {
         transform:
             translateX(0);
     }
 }
 
 
+/* =========================
+   PARPADEO
+========================= */
+
 @keyframes flicker {
 
     0%,
-    87%,
+    84%,
     100% {
         opacity: 0;
     }
 
-    88% {
-        opacity: .08;
+    85% {
+        opacity: .18;
     }
 
-    89% {
+    86% {
         opacity: 0;
     }
 
     93% {
-        opacity: .04;
+        opacity: .10;
     }
 
     94% {
@@ -409,22 +474,32 @@ body {
 }
 
 
-@keyframes buttonIn {
+/* =========================
+   RGB / VHS
+========================= */
 
-    from {
-        opacity: 0;
+@keyframes chroma {
 
+    0%,
+    80%,
+    100% {
         transform:
-            translateX(-50%)
-            translateY(10px);
+            translateX(0);
     }
 
-    to {
-        opacity: 1;
-
+    81% {
         transform:
-            translateX(-50%)
-            translateY(0);
+            translateX(-5px);
+    }
+
+    82% {
+        transform:
+            translateX(6px);
+    }
+
+    83% {
+        transform:
+            translateX(0);
     }
 }
 
@@ -444,11 +519,11 @@ body {
             );
 
         width: 100px;
-        height: 32px;
+        height: 31px;
 
         font-size: 9px;
 
-        letter-spacing: .25em;
-        text-indent: .25em;
+        letter-spacing: .24em;
+        text-indent: .24em;
     }
 }
