@@ -10,9 +10,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const menu = document.querySelector(".menu");
     const menuButton = document.getElementById("menuButton");
 
+    const menuOptions =
+        document.querySelectorAll(
+            ".menu-options button"
+        );
+
+    const sections =
+        document.querySelectorAll(".section");
+
 
     /* =========================================
-       SISTEMA DE ARRANQUE
+       INICIAR
        ========================================= */
 
     if (startButton && intro) {
@@ -21,7 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             startButton.disabled = true;
 
-            startButton.textContent = "CONNECTING...";
+            startButton.textContent =
+                "CONNECTING...";
 
             setTimeout(() => {
 
@@ -38,9 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
        MENÚ
        ========================================= */
 
-    if (menu && menuButton) {
+    if (menuButton && menu) {
 
-        menuButton.addEventListener("click", () => {
+        menuButton.addEventListener("click", (event) => {
+
+            event.stopPropagation();
 
             menu.classList.toggle("open");
 
@@ -50,10 +61,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       CERRAR MENÚ AL HACER CLICK FUERA
+       CAMBIO DE SECCIONES
        ========================================= */
 
-    document.addEventListener("click", (event) => {
+    menuOptions.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const target =
+                button.dataset.section;
+
+
+            sections.forEach(section => {
+
+                section.classList.remove("active");
+
+            });
+
+
+            const targetSection =
+                document.getElementById(
+                    `section-${target}`
+                );
+
+
+            if (targetSection) {
+
+                targetSection.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            menu.classList.remove("open");
+
+        });
+
+    });
+
+
+    /* =========================================
+       CERRAR MENÚ FUERA
+       ========================================= */
+
+    document.addEventListener("click", event => {
 
         if (
             menu &&
@@ -68,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       SISTEMA DE REALIDADES
+       REALIDADES
        ========================================= */
 
     const realities = [
@@ -81,34 +133,35 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const realityElements =
-        document.querySelectorAll(".reality span");
+        document.querySelectorAll(
+            ".reality span"
+        );
 
 
     function changeReality() {
 
-        realityElements.forEach((element, index) => {
+        realityElements.forEach(element => {
 
-            const randomReality =
+            const random =
                 realities[
                     Math.floor(
-                        Math.random() * realities.length
+                        Math.random() *
+                        realities.length
                     )
                 ];
 
-            element.textContent = randomReality;
+            element.textContent = random;
 
         });
 
     }
 
 
-    /* Cambiar las realidades periódicamente */
-
     setInterval(changeReality, 4500);
 
 
     /* =========================================
-       ESTADO DEL MULTIVERSE CORE
+       CORE
        ========================================= */
 
     const stabilityElement =
@@ -117,35 +170,34 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     const statusElement =
-        document.querySelector(".panel-status");
+        document.querySelector(
+            ".panel-status"
+        );
 
 
     function updateCore() {
 
-        if (!stabilityElement || !statusElement) {
+        if (
+            !stabilityElement ||
+            !statusElement
+        ) {
             return;
         }
 
 
         const stability =
-            (Math.random() * 15 + 5).toFixed(1);
+            (Math.random() * 15 + 5)
+            .toFixed(1);
 
 
         stabilityElement.textContent =
             `STABILITY: ${stability}%`;
 
 
-        if (stability < 8) {
-
-            statusElement.textContent =
-                "● CRITICAL";
-
-        } else {
-
-            statusElement.textContent =
-                "● UNSTABLE";
-
-        }
+        statusElement.textContent =
+            stability < 8
+                ? "● CRITICAL"
+                : "● UNSTABLE";
 
     }
 
@@ -154,45 +206,128 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       EFECTO DE GLITCH ALEATORIO
+       REPRODUCTOR
        ========================================= */
 
-    const screen =
-        document.querySelector(".multiverse-screen");
+    const audio =
+        document.getElementById(
+            "audioPlayer"
+        );
+
+    const playButton =
+        document.getElementById(
+            "playButton"
+        );
+
+    const progressBar =
+        document.getElementById(
+            "progressBar"
+        );
+
+    const currentTime =
+        document.getElementById(
+            "currentTime"
+        );
 
 
-    function glitch() {
-
-        if (!screen) {
-            return;
-        }
-
-
-        screen.classList.add("glitch-active");
+    if (
+        audio &&
+        playButton &&
+        progressBar
+    ) {
 
 
-        setTimeout(() => {
+        playButton.addEventListener(
+            "click",
+            () => {
 
-            screen.classList.remove("glitch-active");
+                if (!audio.src) {
 
-        }, 180);
+                    alert(
+                        "Añade primero el archivo de música al audioPlayer."
+                    );
+
+                    return;
+
+                }
+
+
+                if (audio.paused) {
+
+                    audio.play();
+
+                    playButton.textContent =
+                        "Ⅱ";
+
+                } else {
+
+                    audio.pause();
+
+                    playButton.textContent =
+                        "▶";
+
+                }
+
+            }
+        );
+
+
+        audio.addEventListener(
+            "timeupdate",
+            () => {
+
+                if (!audio.duration) {
+                    return;
+                }
+
+
+                const progress =
+                    (
+                        audio.currentTime /
+                        audio.duration
+                    ) * 100;
+
+
+                progressBar.style.width =
+                    `${progress}%`;
+
+
+                const minutes =
+                    Math.floor(
+                        audio.currentTime / 60
+                    );
+
+                const seconds =
+                    Math.floor(
+                        audio.currentTime % 60
+                    );
+
+
+                currentTime.textContent =
+                    `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+            }
+        );
+
+
+        audio.addEventListener(
+            "ended",
+            () => {
+
+                playButton.textContent =
+                    "▶";
+
+                progressBar.style.width =
+                    "0%";
+
+            }
+        );
 
     }
 
 
-    setInterval(() => {
-
-        if (Math.random() > 0.45) {
-
-            glitch();
-
-        }
-
-    }, 2200);
-
-
     /* =========================================
-       MENSAJE DE CONSOLA
+       CONSOLA
        ========================================= */
 
     console.log(
