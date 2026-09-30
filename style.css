@@ -1,7 +1,11 @@
+/* ================================
+   RESET
+================================ */
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html,
@@ -9,52 +13,368 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    font-family: Arial, sans-serif;
-    background: #020403;
-    color: #d8ffe5;
 }
 
-/* =================================
-   PANTALLA DE ENTRADA - LATVERIA
-================================= */
+body {
+    background: #020303;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ================================
+   INTRO / LATVERIA
+================================ */
 
 .intro {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    background:
-        linear-gradient(
-            rgba(0, 15, 8, 0.30),
-            rgba(0, 0, 0, 0.70)
-        ),
-        url("https://u.cubeupload.com/Eradicater/file00000000b36081f5.png")
-        center / cover no-repeat;
+    background-image:
+        url("https://u.cubeupload.com/Eradicater/file00000000b36081f5.png");
 
-    text-align: center;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    isolation: isolate;
 }
 
-.intro::after {
-    content: "";
+
+/* ================================
+   CINEMATIC LOOK
+================================ */
+
+.cinematic-overlay {
     position: absolute;
     inset: 0;
 
+    z-index: -1;
+
     background:
-        repeating-linear-gradient(
-            0deg,
-            rgba(0, 255, 100, 0.03) 0px,
-            rgba(0, 255, 100, 0.03) 1px,
-            transparent 1px,
-            transparent 4px
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.62) 0%,
+            rgba(0, 0, 0, 0.20) 42%,
+            rgba(0, 0, 0, 0.72) 100%
+        ),
+
+        radial-gradient(
+            circle at center,
+            rgba(0, 255, 145, 0.07),
+            transparent 55%
         );
 
     pointer-events: none;
 }
 
-.content {
+
+/* ================================
+   FILM VIGNETTE
+================================ */
+
+.intro::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 42%,
+            rgba(0, 0, 0, 0.38) 100%
+        );
+
+    z-index: 1;
+}
+
+
+/* ================================
+   SUBTLE SCANLINES
+================================ */
+
+.scanlines {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.055;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 3px,
+            rgba(255, 255, 255, 0.12) 4px
+        );
+
+    z-index: 2;
+}
+
+
+/* ================================
+   CONTENT
+================================ */
+
+.intro-content {
     position: relative;
-    z-index: 
+
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    transform: translateY(-2vh);
+
+    animation: appear 1.8s ease forwards;
+}
+
+
+/* ================================
+   FEID
+================================ */
+
+.feid-title {
+    color: #f1f1f1;
+
+    font-family:
+        "Times New Roman",
+        Georgia,
+        serif;
+
+    font-size: clamp(38px, 5vw, 64px);
+
+    font-weight: 600;
+
+    letter-spacing: 0.28em;
+
+    text-indent: 0.28em;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.18),
+        0 0 22px rgba(0,255,140,0.18);
+
+    position: relative;
+}
+
+
+/* ================================
+   NORDIC / RUNE FEEL
+================================ */
+
+.feid-title::before,
+.feid-title::after {
+    content: "ᛉ";
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: rgba(0, 255, 140, 0.42);
+
+    font-size: 0.45em;
+
+    text-shadow:
+        0 0 10px rgba(0,255,140,0.45);
+}
+
+.feid-title::before {
+    right: 100%;
+    margin-right: 18px;
+}
+
+.feid-title::after {
+    left: 100%;
+    margin-left: 18px;
+}
+
+
+/* ================================
+   LINE
+================================ */
+
+.title-line {
+    width: 70px;
+    height: 1px;
+
+    margin-top: 15px;
+    margin-bottom: 30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,255,140,0.8),
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px rgba(0,255,140,0.35);
+}
+
+
+/* ================================
+   START BUTTON
+================================ */
+
+#startButton {
+    appearance: none;
+
+    border: 1px solid rgba(0, 255, 140, 0.42);
+
+    background:
+        rgba(0, 0, 0, 0.38);
+
+    color: rgba(255,255,255,0.88);
+
+    padding: 12px 30px;
+
+    min-width: 120px;
+
+    font-size: 11px;
+
+    letter-spacing: 0.32em;
+
+    text-indent: 0.32em;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(7px);
+
+    -webkit-backdrop-filter: blur(7px);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#startButton:hover {
+    background: rgba(0,255,140,0.10);
+
+    border-color:
+        rgba(0,255,140,0.85);
+
+    box-shadow:
+        0 0 18px rgba(0,255,140,0.18);
+
+    transform: translateY(-2px);
+}
+
+#startButton:active {
+    transform: scale(0.96);
+}
+
+
+/* ================================
+   ENTRY ANIMATION
+================================ */
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(-2vh)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(-2vh)
+            scale(1);
+    }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    .intro {
+        background-position: center center;
+    }
+
+    .cinematic-overlay {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0,0,0,0.68) 0%,
+                rgba(0,0,0,0.18) 45%,
+                rgba(0,0,0,0.78) 100%
+            ),
+
+            radial-gradient(
+                circle at center,
+                rgba(0,255,145,0.06),
+                transparent 60%
+            );
+    }
+
+    .intro-content {
+        transform: translateY(-4vh);
+    }
+
+    .feid-title {
+        font-size: 36px;
+        letter-spacing: 0.23em;
+        text-indent: 0.23em;
+    }
+
+    .feid-title::before {
+        margin-right: 11px;
+    }
+
+    .feid-title::after {
+        margin-left: 11px;
+    }
+
+    .title-line {
+        width: 55px;
+        margin-top: 13px;
+        margin-bottom: 26px;
+    }
+
+    #startButton {
+        min-width: 118px;
+        padding: 13px 25px;
+        font-size: 10px;
+    }
+}
+
+
+/* ================================
+   VERY SMALL PHONES
+================================ */
+
+@media (max-width: 380px) {
+
+    .feid-title {
+        font-size: 31px;
+    }
+
+    #startButton {
+        min-width: 110px;
+        padding: 12px 22px;
+    }
+}
