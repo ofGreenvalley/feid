@@ -34,14 +34,14 @@ body {
     background:
         radial-gradient(
             circle at center,
-            rgba(0,255,100,.12),
+            rgba(0, 255, 100, 0.12),
             transparent 35%
         ),
         #010201;
 
     transition:
-        opacity .8s ease,
-        visibility .8s ease;
+        opacity 0.8s ease,
+        visibility 0.8s ease;
 }
 
 .intro.hidden {
@@ -56,17 +56,19 @@ body {
 .content h1 {
     font-size: clamp(70px, 14vw, 150px);
 
-    letter-spacing: .2em;
+    font-weight: 900;
+
+    letter-spacing: 0.2em;
 
     text-shadow:
-        0 0 15px rgba(255,255,255,.5),
-        0 0 40px rgba(0,255,100,.3);
+        0 0 15px rgba(255, 255, 255, 0.5),
+        0 0 40px rgba(0, 255, 100, 0.3);
 }
 
 .content p {
     margin-top: 15px;
 
-    color: rgba(255,255,255,.65);
+    color: rgba(255, 255, 255, 0.65);
 
     font-size: 12px;
 
@@ -80,28 +82,30 @@ body {
 
     border: 1px solid #00ff73;
 
-    background: rgba(0,255,100,.04);
+    background: rgba(0, 255, 100, 0.04);
 
     color: #fff;
+
+    font-size: 11px;
 
     letter-spacing: 4px;
 
     cursor: pointer;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 #start:hover {
-    background: rgba(0,255,100,.12);
+    background: rgba(0, 255, 100, 0.12);
 
     box-shadow:
-        0 0 25px rgba(0,255,100,.3);
+        0 0 25px rgba(0, 255, 100, 0.3);
 }
 
 .design-signature {
     margin-top: 25px;
 
-    color: rgba(255,255,255,.25);
+    color: rgba(255, 255, 255, 0.25);
 
     font-size: 9px;
 
@@ -122,7 +126,7 @@ body {
     background:
         radial-gradient(
             circle at center,
-            rgba(0,255,100,.07),
+            rgba(0, 255, 100, 0.07),
             transparent 35%
         ),
         #020302;
@@ -136,12 +140,12 @@ body {
 
     background:
         linear-gradient(
-            rgba(255,255,255,.018) 1px,
+            rgba(255, 255, 255, 0.018) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255,255,255,.018) 1px,
+            rgba(255, 255, 255, 0.018) 1px,
             transparent 1px
         );
 
@@ -164,16 +168,16 @@ body {
 
     height: 75px;
 
-    z-index: 100;
+    z-index: 20;
 
     display: flex;
     align-items: center;
 
     padding: 0 35px;
 
-    border-bottom: 1px solid rgba(0,255,100,.1);
+    border-bottom: 1px solid rgba(0, 255, 100, 0.1);
 
-    background: rgba(0,0,0,.3);
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .brand {
@@ -184,7 +188,7 @@ body {
     letter-spacing: 8px;
 
     text-shadow:
-        0 0 15px rgba(0,255,100,.4);
+        0 0 15px rgba(0, 255, 100, 0.4);
 }
 
 
@@ -198,7 +202,7 @@ body {
     top: 92px;
     right: 35px;
 
-    z-index: 500;
+    z-index: 100;
 }
 
 .menu-main {
@@ -210,52 +214,52 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    border: 1px solid rgba(0,255,100,.4);
+    border: 1px solid rgba(0, 255, 100, 0.4);
 
-    background: rgba(0,0,0,.9);
+    background: rgba(0, 0, 0, 0.9);
 
     color: #fff;
-
-    cursor: pointer;
 
     font-size: 10px;
 
     letter-spacing: 3px;
 
-    transition: .25s;
+    cursor: pointer;
+
+    transition: 0.25s;
 }
 
 .menu-main:hover {
     border-color: #00ff73;
 
     box-shadow:
-        0 0 20px rgba(0,255,100,.2);
+        0 0 20px rgba(0, 255, 100, 0.2);
 }
 
-.menu-symbol {
+.menu-main span {
     color: #00ff73;
 
     font-size: 18px;
 
     line-height: 10px;
 
-    transition: transform .3s;
+    transition: transform 0.3s;
 }
 
-.menu.open .menu-symbol {
+.menu.open .menu-main span {
     transform: rotate(45deg);
 }
 
 .menu-options {
     display: none;
 
-    margin-top: 5px;
-
     width: 120px;
 
-    border: 1px solid rgba(0,255,100,.25);
+    margin-top: 5px;
 
-    background: rgba(0,0,0,.96);
+    border: 1px solid rgba(0, 255, 100, 0.25);
+
+    background: rgba(0, 0, 0, 0.96);
 }
 
 .menu.open .menu-options {
@@ -270,75 +274,44 @@ body {
     padding: 14px 12px;
 
     border: 0;
-    border-bottom: 1px solid rgba(0,255,100,.08);
+
+    border-bottom: 1px solid rgba(0, 255, 100, 0.08);
 
     background: transparent;
 
-    color: rgba(255,255,255,.75);
+    color: rgba(255, 255, 255, 0.75);
 
     text-align: left;
-
-    cursor: pointer;
 
     font-size: 9px;
 
     letter-spacing: 2px;
 
-    transition: .2s;
+    cursor: pointer;
+
+    transition: 0.2s;
 }
 
 .menu-options button:hover {
     color: #fff;
 
-    background: rgba(0,255,100,.1);
+    background: rgba(0, 255, 100, 0.1);
 
     padding-left: 18px;
 }
 
 
 /* =========================================
-   SECTIONS
+   CENTRO
    ========================================= */
 
-.sections {
+.central {
     position: absolute;
 
     top: 75px;
     left: 0;
     right: 0;
     bottom: 0;
-
-    z-index: 10;
-}
-
-.section {
-    position: absolute;
-
-    inset: 0;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        opacity .35s ease,
-        visibility .35s ease;
-}
-
-.section.active {
-    opacity: 1;
-
-    visibility: visible;
-}
-
-
-/* =========================================
-   CENTRAL HOME
-   ========================================= */
-
-.central {
-    width: 100%;
-    height: 100%;
 
     display: flex;
 
@@ -348,12 +321,20 @@ body {
     gap: 55px;
 
     padding: 30px;
+
+    z-index: 5;
 }
 
 
 /* =========================================
    AVATAR
    ========================================= */
+
+.avatar-container {
+    position: relative;
+
+    flex-shrink: 0;
+}
 
 .avatar-frame {
     position: relative;
@@ -363,10 +344,12 @@ body {
 
     padding: 9px;
 
-    border: 1px solid rgba(0,255,100,.3);
+    border: 1px solid rgba(0, 255, 100, 0.3);
+
+    background: rgba(0, 0, 0, 0.4);
 
     box-shadow:
-        0 0 30px rgba(0,255,100,.08);
+        0 0 30px rgba(0, 255, 100, 0.08);
 }
 
 .avatar {
@@ -375,10 +358,12 @@ body {
 
     overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .avatar img {
+    display: block;
+
     width: 100%;
     height: 100%;
 
@@ -386,7 +371,9 @@ body {
 }
 
 
-/* CORNERS */
+/* =========================================
+   AVATAR CORNERS
+   ========================================= */
 
 .corner {
     position: absolute;
@@ -397,6 +384,8 @@ body {
     border-color: #00ff73;
 
     border-style: solid;
+
+    z-index: 2;
 }
 
 .top-left {
@@ -429,19 +418,28 @@ body {
 
 
 /* =========================================
-   MULTIVERSE
+   MULTIVERSE PANEL
    ========================================= */
 
 .universe-panel {
+    position: relative;
+
     width: min(620px, 55vw);
 
-    border: 1px solid rgba(0,255,100,.25);
+    flex-shrink: 1;
 
-    background: rgba(0,0,0,.7);
+    border: 1px solid rgba(0, 255, 100, 0.25);
+
+    background: rgba(0, 0, 0, 0.7);
 
     box-shadow:
-        0 0 40px rgba(0,255,100,.06);
+        0 0 40px rgba(0, 255, 100, 0.06);
 }
+
+
+/* =========================================
+   PANEL HEADER
+   ========================================= */
 
 .panel-header {
     height: 45px;
@@ -452,7 +450,7 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    border-bottom: 1px solid rgba(0,255,100,.12);
+    border-bottom: 1px solid rgba(0, 255, 100, 0.12);
 
     font-size: 9px;
 
@@ -462,6 +460,11 @@ body {
 .panel-status {
     color: #00ff73;
 }
+
+
+/* =========================================
+   SCREEN
+   ========================================= */
 
 .screen {
     position: relative;
@@ -473,20 +476,25 @@ body {
     background:
         radial-gradient(
             circle,
-            rgba(0,255,100,.1),
+            rgba(0, 255, 100, 0.1),
             transparent 45%
         ),
         #010302;
 }
+
+
+/* =========================================
+   REALITIES
+   ========================================= */
 
 .reality {
     position: absolute;
 
     padding: 5px;
 
-    border: 1px solid rgba(0,255,100,.15);
+    border: 1px solid rgba(0, 255, 100, 0.15);
 
-    color: rgba(255,255,255,.4);
+    color: rgba(255, 255, 255, 0.4);
 
     font-size: 8px;
 
@@ -509,7 +517,9 @@ body {
 }
 
 
-/* CORE */
+/* =========================================
+   CORE
+   ========================================= */
 
 .core {
     position: absolute;
@@ -528,13 +538,14 @@ body {
 
     inset: 0;
 
-    border: 1px solid rgba(0,255,100,.3);
+    border: 1px solid rgba(0, 255, 100, 0.3);
 
     border-radius: 50%;
 }
 
 .ring-one {
-    animation: rotate 8s linear infinite;
+    animation:
+        rotate 8s linear infinite;
 }
 
 .ring-two {
@@ -542,15 +553,17 @@ body {
 
     border-style: dashed;
 
-    animation: rotateReverse 5s linear infinite;
+    animation:
+        rotateReverse 5s linear infinite;
 }
 
 .ring-three {
     inset: 38px;
 
-    border-color: rgba(0,255,100,.6);
+    border-color: rgba(0, 255, 100, 0.6);
 
-    animation: rotate 3s linear infinite;
+    animation:
+        rotate 3s linear infinite;
 }
 
 .core-energy {
@@ -570,13 +583,16 @@ body {
 
     box-shadow:
         0 0 30px #00ff73,
-        0 0 80px rgba(0,255,100,.5);
+        0 0 80px rgba(0, 255, 100, 0.5);
 
-    animation: pulse 1.8s infinite;
+    animation:
+        pulse 1.8s infinite;
 }
 
 
-/* PARTICLES */
+/* =========================================
+   PARTICLES
+   ========================================= */
 
 .core-particles span {
     position: absolute;
@@ -588,7 +604,8 @@ body {
 
     border-radius: 50%;
 
-    box-shadow: 0 0 8px #00ff73;
+    box-shadow:
+        0 0 8px #00ff73;
 }
 
 .core-particles span:nth-child(1) {
@@ -642,7 +659,9 @@ body {
 }
 
 
-/* GLITCH */
+/* =========================================
+   GLITCH
+   ========================================= */
 
 .glitch-bar {
     position: absolute;
@@ -651,31 +670,37 @@ body {
 
     background: #00ff73;
 
-    opacity: .5;
+    opacity: 0.5;
 
-    animation: glitch 3s infinite;
+    animation:
+        glitch 3s infinite;
 }
 
 .glitch-one {
     width: 100px;
+
     top: 25%;
     left: 10%;
 }
 
 .glitch-two {
     width: 150px;
+
     top: 65%;
     right: 5%;
 }
 
 .glitch-three {
     width: 60px;
+
     top: 45%;
     left: 70%;
 }
 
 
-/* SCAN */
+/* =========================================
+   SCANLINES
+   ========================================= */
 
 .screen-scanline {
     position: absolute;
@@ -687,7 +712,7 @@ body {
             0deg,
             transparent,
             transparent 3px,
-            rgba(0,255,100,.025) 4px
+            rgba(0, 255, 100, 0.025) 4px
         );
 
     pointer-events: none;
@@ -696,19 +721,22 @@ body {
 .signal-glitch {
     position: absolute;
 
+    top: 0;
     left: 0;
 
     width: 100%;
-
     height: 5px;
 
-    background: rgba(0,255,100,.1);
+    background: rgba(0, 255, 100, 0.1);
 
-    animation: scan 4s linear infinite;
+    animation:
+        scan 4s linear infinite;
 }
 
 
-/* FOOTER */
+/* =========================================
+   FOOTER
+   ========================================= */
 
 .panel-footer {
     min-height: 42px;
@@ -722,9 +750,9 @@ body {
 
     gap: 10px;
 
-    border-top: 1px solid rgba(0,255,100,.1);
+    border-top: 1px solid rgba(0, 255, 100, 0.1);
 
-    color: rgba(255,255,255,.4);
+    color: rgba(255, 255, 255, 0.4);
 
     font-size: 7px;
 
@@ -733,278 +761,11 @@ body {
 
 
 /* =========================================
-   FRIENDS
-   ========================================= */
-
-.friends-panel,
-.music-panel {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    width: min(700px, 85vw);
-
-    padding: 30px;
-
-    border: 1px solid rgba(0,255,100,.2);
-
-    background: rgba(0,0,0,.75);
-
-    box-shadow:
-        0 0 40px rgba(0,255,100,.06);
-}
-
-.section-title {
-    display: flex;
-
-    justify-content: space-between;
-
-    padding-bottom: 15px;
-
-    margin-bottom: 20px;
-
-    border-bottom: 1px solid rgba(0,255,100,.12);
-}
-
-.section-title span {
-    font-size: 16px;
-
-    letter-spacing: 4px;
-}
-
-.section-title small {
-    color: #00ff73;
-
-    font-size: 8px;
-}
-
-.friends-grid {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 12px;
-}
-
-.friend-card {
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    padding: 14px;
-
-    border: 1px solid rgba(0,255,100,.12);
-
-    background: rgba(0,255,100,.025);
-}
-
-.friend-avatar {
-    width: 45px;
-    height: 45px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(0,255,100,.4);
-
-    color: #00ff73;
-
-    font-size: 10px;
-}
-
-.friend-card strong {
-    display: block;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-}
-
-.friend-card small {
-    display: block;
-
-    margin-top: 6px;
-
-    color: #00ff73;
-
-    font-size: 8px;
-}
-
-
-/* =========================================
-   MUSIC
-   ========================================= */
-
-.music-player {
-    display: flex;
-
-    align-items: center;
-
-    gap: 30px;
-}
-
-.album-art {
-    position: relative;
-
-    width: 190px;
-    height: 190px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
-    border: 1px solid rgba(0,255,100,.35);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0,255,100,.25),
-            #020402 65%
-        );
-
-    font-size: 27px;
-
-    font-weight: bold;
-
-    letter-spacing: 5px;
-}
-
-.album-glow {
-    position: absolute;
-
-    width: 100px;
-    height: 100px;
-
-    border-radius: 50%;
-
-    background: #00ff73;
-
-    filter: blur(60px);
-
-    opacity: .25;
-
-    animation: pulse 2s infinite alternate;
-}
-
-.album-art span {
-    position: relative;
-
-    z-index: 2;
-}
-
-.music-info {
-    flex: 1;
-}
-
-.music-label {
-    color: #00ff73;
-
-    font-size: 8px;
-
-    letter-spacing: 3px;
-}
-
-.music-info h2 {
-    margin-top: 10px;
-
-    font-size: 30px;
-
-    letter-spacing: 5px;
-}
-
-.music-info p {
-    margin-top: 5px;
-
-    color: rgba(255,255,255,.45);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-}
-
-.music-progress {
-    width: 100%;
-    height: 3px;
-
-    margin-top: 30px;
-
-    background: rgba(255,255,255,.1);
-
-    cursor: pointer;
-}
-
-.progress-bar {
-    width: 0%;
-    height: 100%;
-
-    background: #00ff73;
-
-    box-shadow: 0 0 8px #00ff73;
-}
-
-.music-time {
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-top: 7px;
-
-    color: rgba(255,255,255,.35);
-
-    font-size: 8px;
-}
-
-.music-controls {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    gap: 15px;
-
-    margin-top: 20px;
-}
-
-.music-controls button {
-    width: 38px;
-    height: 38px;
-
-    border: 1px solid rgba(0,255,100,.25);
-
-    background: transparent;
-
-    color: #fff;
-
-    cursor: pointer;
-}
-
-.music-controls .play-button {
-    width: 48px;
-    height: 48px;
-
-    border-color: #00ff73;
-
-    color: #00ff73;
-}
-
-
-/* =========================================
    ANIMACIONES
    ========================================= */
 
 @keyframes rotate {
+
     from {
         transform: rotate(0deg);
     }
@@ -1012,9 +773,11 @@ body {
     to {
         transform: rotate(360deg);
     }
+
 }
 
 @keyframes rotateReverse {
+
     from {
         transform: rotate(360deg);
     }
@@ -1022,20 +785,27 @@ body {
     to {
         transform: rotate(0deg);
     }
+
 }
 
 @keyframes pulse {
-    0%, 100% {
-        transform: scale(.85);
+
+    0%,
+    100% {
+        transform: scale(0.85);
     }
 
     50% {
         transform: scale(1.1);
     }
+
 }
 
 @keyframes glitch {
-    0%, 85%, 100% {
+
+    0%,
+    85%,
+    100% {
         transform: translateX(0);
     }
 
@@ -1046,9 +816,11 @@ body {
     94% {
         transform: translateX(-20px);
     }
+
 }
 
 @keyframes scan {
+
     from {
         top: 0;
     }
@@ -1056,6 +828,7 @@ body {
     to {
         top: 100%;
     }
+
 }
 
 
@@ -1073,14 +846,13 @@ body {
 
     .menu {
         top: 80px;
+
         right: 20px;
     }
 
-    .sections {
-        top: 65px;
-    }
-
     .central {
+        top: 65px;
+
         flex-direction: column;
 
         gap: 25px;
@@ -1097,6 +869,7 @@ body {
 
     .universe-panel {
         width: 100%;
+        max-width: 620px;
     }
 
     .screen {
@@ -1112,27 +885,4 @@ body {
         flex-wrap: wrap;
     }
 
-    .friends-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .friends-panel,
-    .music-panel {
-        width: 90vw;
-
-        padding: 20px;
-    }
-
-    .music-player {
-        flex-direction: column;
-    }
-
-    .album-art {
-        width: 145px;
-        height: 145px;
-    }
-
-    .music-info {
-        width: 100%;
-    }
 }
