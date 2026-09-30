@@ -396,3 +396,878 @@ body {
         font-size: 10px !important;
     }
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+body {
+    min-height: 100dvh;
+}
+
+
+/* =========================
+   PANTALLA
+========================= */
+
+.entry {
+    position: relative;
+
+    width: 100vw;
+    height: 100dvh;
+
+    overflow: hidden;
+
+    background: #000;
+}
+
+
+/* =========================
+   IMAGEN
+========================= */
+
+.entry-image {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background-image:
+        url("https://u.cubeupload.com/Eradicater/file000000007d7081f5.png");
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+
+    filter:
+        grayscale(1)
+        brightness(.78)
+        contrast(1.12);
+
+    transform: scale(1.02);
+}
+
+
+/* =========================
+   TV
+========================= */
+
+.tv-effect {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+.tv-scanlines {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,.16) 0px,
+            rgba(255,255,255,.16) 1px,
+            rgba(0,0,0,.25) 2px,
+            rgba(0,0,0,.25) 4px
+        );
+
+    opacity: .75;
+
+    animation:
+        scan 0.12s linear infinite;
+}
+
+
+.tv-noise {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            rgba(255,255,255,.12) 0px,
+            transparent 2px,
+            transparent 5px
+        );
+
+    opacity: .12;
+
+    animation:
+        noise .15s steps(2) infinite;
+}
+
+
+.tv-glitch {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 0%,
+            transparent 35%,
+            rgba(255,255,255,.15) 35.2%,
+            transparent 36%,
+            transparent 60%,
+            rgba(255,255,255,.12) 60.2%,
+            transparent 61%,
+            transparent 78%,
+            rgba(255,255,255,.16) 78.2%,
+            transparent 79%
+        );
+
+    opacity: .7;
+
+    animation:
+        glitch 2s infinite steps(1);
+}
+
+
+.tv-flicker {
+    position: absolute;
+
+    inset: 0;
+
+    background: #fff;
+
+    opacity: 0;
+
+    animation:
+        flicker 3s infinite steps(1);
+}
+
+
+/* =========================
+   CINEMÁTICO
+========================= */
+
+.cinematic {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 10;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 38%,
+            rgba(0,0,0,.20) 70%,
+            rgba(0,0,0,.82) 100%
+        );
+}
+
+
+/* =========================
+   BOTÓN INICIAR
+========================= */
+
+.press {
+    position: fixed !important;
+
+    z-index: 99999 !important;
+
+    left: 50% !important;
+
+    bottom: 60px !important;
+
+    transform: translateX(-50%) !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    width: 120px !important;
+
+    height: 40px !important;
+
+    padding: 0 !important;
+
+    border: 2px solid #fff !important;
+
+    border-radius: 0 !important;
+
+    background: #000 !important;
+
+    color: #fff !important;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif !important;
+
+    font-size: 12px !important;
+
+    font-weight: normal !important;
+
+    letter-spacing: .25em !important;
+
+    text-indent: .25em !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+    cursor: pointer !important;
+}
+
+
+.press:active {
+    transform:
+        translateX(-50%)
+        scale(.94) !important;
+}
+
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes scan {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(4px);
+    }
+}
+
+
+@keyframes noise {
+
+    0% {
+        transform: translate(0,0);
+    }
+
+    25% {
+        transform: translate(2%,-2%);
+    }
+
+    50% {
+        transform: translate(-2%,2%);
+    }
+
+    75% {
+        transform: translate(1%,1%);
+    }
+
+    100% {
+        transform: translate(0,0);
+    }
+}
+
+
+@keyframes glitch {
+
+    0%,
+    70%,
+    100% {
+        transform: translateX(0);
+    }
+
+    71% {
+        transform: translateX(-15px);
+    }
+
+    72% {
+        transform: translateX(18px);
+    }
+
+    73% {
+        transform: translateX(-8px);
+    }
+
+    74% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(0);
+    }
+
+    90% {
+        transform: translateX(8px);
+    }
+
+    91% {
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes flicker {
+
+    0%,
+    85%,
+    100% {
+        opacity: 0;
+    }
+
+    86% {
+        opacity: .12;
+    }
+
+    87% {
+        opacity: 0;
+    }
+
+    93% {
+        opacity: .08;
+    }
+
+    94% {
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   INTERIOR
+===================================================== */
+
+.inside {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0
+        clamp(30px, 7vw, 110px);
+
+    background: #000;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+
+/* =========================
+   MOSTRAR INTERIOR
+========================= */
+
+body.leaving .entry {
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity .8s ease;
+}
+
+body.leaving .inside {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =========================
+   IDENTIDAD
+========================= */
+
+.identity {
+    align-self: center;
+
+    margin-left: clamp(20px, 5vw, 80px);
+
+    user-select: none;
+}
+
+
+.feid-title {
+    color: #fff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
+
+    font-weight: 400;
+
+    letter-spacing: .18em;
+
+    text-transform: none;
+
+    animation:
+        softBlink 4s infinite;
+}
+
+
+.feid-subtitle {
+    margin-top: 7px;
+
+    color: rgba(255,255,255,.48);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 9px;
+
+    font-weight: 300;
+
+    letter-spacing: .12em;
+}
+
+
+/* =========================
+   ÁREA DEL PERFIL
+========================= */
+
+.profile-area {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-right: clamp(15px, 5vw, 80px);
+}
+
+
+/* =========================
+   AVATAR
+========================= */
+
+.avatar-button {
+    width: clamp(110px, 13vw, 165px);
+
+    height: clamp(110px, 13vw, 165px);
+
+    padding: 0;
+
+    border: 1px solid rgba(255,255,255,.20);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        border-color .3s ease,
+        transform .3s ease;
+}
+
+
+.avatar-button:hover {
+    border-color: rgba(255,255,255,.50);
+
+    transform: scale(1.015);
+}
+
+
+.avatar-button img {
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   BOTONES LATERALES
+========================= */
+
+.side-buttons {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.side-button {
+    width: 30px;
+
+    height: 30px;
+
+    padding: 0;
+
+    border: 1px solid rgba(255,255,255,.20);
+
+    border-radius: 9px;
+
+    background: rgba(0,0,0,.45);
+
+    color: rgba(255,255,255,.78);
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        color .25s ease;
+}
+
+
+.side-button:hover {
+    background: rgba(255,255,255,.08);
+
+    border-color: rgba(255,255,255,.45);
+
+    color: #fff;
+}
+
+
+/* =========================
+   PANELES
+========================= */
+
+.floating-panel {
+    position: absolute;
+
+    right: 42px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%)
+        translateX(8px);
+
+    width: 190px;
+
+    padding: 14px;
+
+    border: 1px solid rgba(255,255,255,.16);
+
+    border-radius: 15px;
+
+    background: rgba(5,5,5,.88);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    color: #fff;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+}
+
+
+.floating-panel.open {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(-50%)
+        translateX(0);
+}
+
+
+/* =========================
+   MENSAJE
+========================= */
+
+.message-panel {
+    width: 230px;
+
+    text-align: center;
+}
+
+
+.message-text {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color: rgba(255,255,255,.82);
+}
+
+
+/* =========================
+   FRIENDS
+========================= */
+
+.panel-title {
+    margin-bottom: 11px;
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    color: rgba(255,255,255,.45);
+}
+
+
+.friend {
+    margin-bottom: 11px;
+}
+
+
+.friend:last-child {
+    margin-bottom: 0;
+}
+
+
+.friend-name {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: rgba(255,255,255,.90);
+
+    font-size: 11px;
+}
+
+
+.status {
+    width: 7px;
+
+    height: 7px;
+
+    flex: 0 0 7px;
+
+    border-radius: 50%;
+
+    background: #b51c1c;
+
+    box-shadow:
+        0 0 5px rgba(181,28,28,.25);
+}
+
+
+.friend-status {
+    margin-left: 14px;
+
+    margin-top: 2px;
+
+    color: rgba(255,255,255,.35);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 8px;
+
+    font-style: italic;
+
+    font-weight: 300;
+
+    letter-spacing: .03em;
+}
+
+
+/* =========================
+   MÚSICA
+========================= */
+
+.music-panel {
+    width: 245px;
+
+    padding: 12px;
+}
+
+
+.music-info {
+    margin-bottom: 8px;
+}
+
+
+.music-artist {
+    color: rgba(255,255,255,.42);
+
+    font-size: 8px;
+
+    letter-spacing: .15em;
+
+    text-transform: uppercase;
+}
+
+
+.music-title {
+    margin-top: 2px;
+
+    color: rgba(255,255,255,.88);
+
+    font-size: 11px;
+}
+
+
+.music-panel iframe {
+    display: block;
+
+    width: 100%;
+
+    height: 52px;
+
+    border: 0;
+
+    border-radius: 8px;
+}
+
+
+/* =========================
+   PARPADEO FEID
+========================= */
+
+@keyframes softBlink {
+
+    0%,
+    88%,
+    100% {
+        opacity: 1;
+    }
+
+    91% {
+        opacity: .55;
+    }
+
+    93% {
+        opacity: .9;
+    }
+}
+
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width: 600px) {
+
+    .press {
+        bottom: 45px !important;
+
+        width: 110px !important;
+
+        height: 36px !important;
+
+        font-size: 10px !important;
+    }
+
+
+    .inside {
+        padding: 0 20px;
+    }
+
+
+    .identity {
+        margin-left: 0;
+    }
+
+
+    .feid-title {
+        font-size: 15px;
+    }
+
+
+    .feid-subtitle {
+        font-size: 8px;
+    }
+
+
+    .profile-area {
+        margin-right: 0;
+
+        gap: 8px;
+    }
+
+
+    .avatar-button {
+        width: 105px;
+
+        height: 105px;
+
+        border-radius: 20px;
+    }
+
+
+    .side-button {
+        width: 27px;
+
+        height: 27px;
+
+        font-size: 12px;
+    }
+
+
+    .floating-panel {
+        right: 35px;
+
+        width: 175px;
+    }
+
+
+    .music-panel {
+        width: 215px;
+    }
+
+}
