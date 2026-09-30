@@ -21,13 +21,14 @@
 
 <body>
 
+    <!-- =========================
+         PANTALLA DE ENTRADA
+    ========================== -->
+
     <main class="entry">
 
-        <!-- IMAGEN -->
         <div class="entry-image"></div>
 
-
-        <!-- EFECTO DE TELEVISIÓN -->
         <div class="tv-effect">
 
             <div class="tv-scanlines"></div>
@@ -40,18 +41,208 @@
 
         </div>
 
-
-        <!-- EFECTO CINEMÁTICO -->
         <div class="cinematic"></div>
 
-
-        <!-- BOTÓN INICIAR -->
         <button
             id="pressButton"
             class="press"
         >
             INICIAR
         </button>
+
+    </main>
+
+
+    <!-- =========================
+         INTERIOR
+    ========================== -->
+
+    <main class="inside">
+
+        <!-- LADO IZQUIERDO -->
+
+        <section class="identity">
+
+            <div class="feid-title">
+                Feid
+            </div>
+
+            <div class="feid-subtitle">
+                יום הדין
+            </div>
+
+        </section>
+
+
+        <!-- LADO DERECHO -->
+
+        <section class="profile-area">
+
+            <button
+                id="avatarButton"
+                class="avatar-button"
+                aria-label="Abrir mensaje"
+            >
+
+                <img
+                    src="https://xatimg.com/image/NFQsj3G8hSpe.jpg"
+                    alt="Avatar"
+                >
+
+            </button>
+
+
+            <!-- BOTONES -->
+
+            <div class="side-buttons">
+
+                <button
+                    id="plusButton"
+                    class="side-button"
+                    aria-label="Más"
+                >
+                    +
+                </button>
+
+                <button
+                    id="friendsButton"
+                    class="side-button"
+                    aria-label="Amigos"
+                >
+                    👥
+                </button>
+
+                <button
+                    id="musicButton"
+                    class="side-button"
+                    aria-label="Música"
+                >
+                    ♪
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 PANEL DEL AVATAR
+            ========================== -->
+
+            <div
+                id="messagePanel"
+                class="floating-panel message-panel"
+            >
+
+                <div class="message-text">
+                    Bajo esta roca, edificaré mi imperio.
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 PANEL DE AMIGOS
+            ========================== -->
+
+            <div
+                id="friendsPanel"
+                class="floating-panel friends-panel"
+            >
+
+                <div class="panel-title">
+                    FRIENDS
+                </div>
+
+
+                <div class="friend">
+
+                    <div class="friend-name">
+                        <span class="status"></span>
+                        Lugo
+                    </div>
+
+                    <div class="friend-status">
+                        gymrat, training
+                    </div>
+
+                </div>
+
+
+                <div class="friend">
+
+                    <div class="friend-name">
+                        <span class="status"></span>
+                        Estela
+                    </div>
+
+                    <div class="friend-status">
+                        working
+                    </div>
+
+                </div>
+
+
+                <div class="friend">
+
+                    <div class="friend-name">
+                        <span class="status"></span>
+                        Mar
+                    </div>
+
+                    <div class="friend-status">
+                        bingueanding
+                    </div>
+
+                </div>
+
+
+                <div class="friend">
+
+                    <div class="friend-name">
+                        <span class="status"></span>
+                        Gabi
+                    </div>
+
+                    <div class="friend-status">
+                        playing with me
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 PANEL DE MÚSICA
+            ========================== -->
+
+            <div
+                id="musicPanel"
+                class="floating-panel music-panel"
+            >
+
+                <div class="music-info">
+
+                    <div class="music-artist">
+                        Feid
+                    </div>
+
+                    <div class="music-title">
+                        Aguante
+                    </div>
+
+                </div>
+
+
+                <iframe
+                    src="https://www.youtube.com/embed/XrmLosgQ7Vg?rel=0"
+                    title="Aguante - Feid"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen
+                ></iframe>
+
+            </div>
+
+        </section>
 
     </main>
 
