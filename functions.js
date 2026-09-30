@@ -1,7 +1,7 @@
-const startButton = document.getElementById("startButton");
+const pressButton = document.getElementById("pressButton");
 
-startButton.addEventListener("click", () => {
+pressButton.addEventListener("click", () => {
 
-    document.body.classList.add("starting");
+    document.body.classList.add("leaving");
 
 });
