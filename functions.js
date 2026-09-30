@@ -1,100 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    const pressButton = document.getElementById("pressButton");
+    const avatarButton = document.getElementById("avatarButton");
+    const plusButton = document.getElementById("plusButton");
+    const friendsButton = document.getElementById("friendsButton");
+    const musicButton = document.getElementById("musicButton");
 
-    const pressButton =
-        document.getElementById("pressButton");
+    const messagePanel = document.getElementById("messagePanel");
+    const friendsPanel = document.getElementById("friendsPanel");
+    const musicPanel = document.getElementById("musicPanel");
 
-    const avatarButton =
-        document.getElementById("avatarButton");
-
-    const plusButton =
-        document.getElementById("plusButton");
-
-    const friendsButton =
-        document.getElementById("friendsButton");
-
-    const musicButton =
-        document.getElementById("musicButton");
-
-
-    const messagePanel =
-        document.getElementById("messagePanel");
-
-    const friendsPanel =
-        document.getElementById("friendsPanel");
-
-    const musicPanel =
-        document.getElementById("musicPanel");
-
-
-    const playerButton =
-        document.getElementById("playerButton");
-
-    const progressBar =
-        document.getElementById("progressBar");
-
-    const progressFill =
-        document.getElementById("progressFill");
-
-    const currentTime =
-        document.getElementById("currentTime");
-
-    const duration =
-        document.getElementById("duration");
-
+    const playerButton = document.getElementById("playerButton");
+    const progressBar = document.getElementById("progressBar");
+    const progressFill = document.getElementById("progressFill");
+    const currentTime = document.getElementById("currentTime");
+    const duration = document.getElementById("duration");
 
     let player = null;
-
     let playerReady = false;
-
     let progressTimer = null;
 
 
     /* =========================
-       CERRAR PANELES
+       YOUTUBE
     ========================== */
 
-    function closePanels() {
+    function createPlayer() {
 
-        messagePanel.classList.remove("open");
-
-        friendsPanel.classList.remove("open");
-
-        musicPanel.classList.remove("open");
-
-    }
-
-
-    /* =========================
-       YOUTUBE PLAYER
-    ========================== */
-
-    window.onYouTubeIframeAPIReady = function () {
+        if (player || typeof YT === "undefined") {
+            return;
+        }
 
         player = new YT.Player("youtubePlayer", {
 
-            height: "1",
-
-            width: "1",
-
-            videoId: "Qq5QJxZaZTI",
+            videoId: "6Dh2m38wG8Q",
 
             playerVars: {
-
                 autoplay: 0,
-
                 controls: 0,
-
                 disablekb: 1,
-
                 fs: 0,
-
-                modestbranding: 1,
-
                 playsinline: 1,
-
                 rel: 0
-
             },
 
             events: {
@@ -123,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         );
 
                         startProgress();
-
                     }
 
 
@@ -140,7 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         );
 
                         stopProgress();
-
                     }
 
 
@@ -161,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         currentTime.textContent = "0:00";
 
                         stopProgress();
-
                     }
 
                 }
@@ -170,31 +114,66 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+    }
+
+
+    /* =========================
+       API DE YOUTUBE
+    ========================== */
+
+    window.onYouTubeIframeAPIReady = function () {
+
+        createPlayer();
+
     };
 
 
     /* =========================
-       FORMATO DEL TIEMPO
+       POR SI LA API YA CARGÓ
+    ========================== */
+
+    if (typeof YT !== "undefined") {
+
+        createPlayer();
+
+    }
+
+
+    /* =========================
+       CERRAR PANELES
+    ========================== */
+
+    function closePanels() {
+
+        messagePanel.classList.remove("open");
+
+        friendsPanel.classList.remove("open");
+
+        musicPanel.classList.remove("open");
+
+    }
+
+
+    /* =========================
+       TIEMPO
     ========================== */
 
     function formatTime(seconds) {
 
         if (!Number.isFinite(seconds)) {
-
             return "0:00";
-
         }
 
         const minutes =
             Math.floor(seconds / 60);
 
-        const remainingSeconds =
+        const secondsLeft =
             Math.floor(seconds % 60);
 
         return (
             minutes +
             ":" +
-            String(remainingSeconds).padStart(2, "0")
+            String(secondsLeft).padStart(2, "0")
         );
 
     }
@@ -207,11 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateProgress() {
 
         if (!playerReady || !player) {
-
             return;
-
         }
-
 
         const current =
             player.getCurrentTime();
@@ -219,27 +195,22 @@ document.addEventListener("DOMContentLoaded", function () {
         const total =
             player.getDuration();
 
-
-        if (!Number.isFinite(current) ||
+        if (
+            !Number.isFinite(current) ||
             !Number.isFinite(total) ||
-            total <= 0) {
-
+            total <= 0
+        ) {
             return;
-
         }
-
 
         const percentage =
             (current / total) * 100;
 
-
         progressFill.style.width =
             Math.min(100, Math.max(0, percentage)) + "%";
 
-
         currentTime.textContent =
             formatTime(current);
-
 
         duration.textContent =
             formatTime(total);
@@ -285,11 +256,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.body.classList.add("leaving");
 
-
             /*
-                La interacción con INICIAR
-                permite solicitar la reproducción.
-            */
+             * El usuario acaba de interactuar
+             * con la página, por lo que aquí
+             * intentamos iniciar la música.
+             */
 
             if (playerReady && player) {
 
@@ -311,13 +282,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             event.stopPropagation();
 
-
             const isOpen =
                 messagePanel.classList.contains("open");
 
-
             closePanels();
-
 
             if (!isOpen) {
 
@@ -339,13 +307,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             event.stopPropagation();
 
-
             const isOpen =
                 friendsPanel.classList.contains("open");
 
-
             closePanels();
-
 
             if (!isOpen) {
 
@@ -367,13 +332,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             event.stopPropagation();
 
-
             const isOpen =
                 musicPanel.classList.contains("open");
 
-
             closePanels();
-
 
             if (!isOpen) {
 
@@ -395,17 +357,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             event.stopPropagation();
 
-
             if (!playerReady || !player) {
-
                 return;
-
             }
-
 
             const state =
                 player.getPlayerState();
-
 
             if (
                 state ===
@@ -434,21 +391,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             event.stopPropagation();
 
-
             if (!playerReady || !player) {
-
                 return;
-
             }
-
 
             const rect =
                 progressBar.getBoundingClientRect();
 
-
             const position =
                 event.clientX - rect.left;
-
 
             const percentage =
                 Math.min(
@@ -459,10 +410,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     )
                 );
 
-
             const total =
                 player.getDuration();
-
 
             if (
                 Number.isFinite(total) &&
@@ -481,7 +430,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       BOTÓN +
+       +
     ========================== */
 
     plusButton.addEventListener(
@@ -497,8 +446,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       CERRAR AL HACER CLIC
-       FUERA
+       CERRAR FUERA
     ========================== */
 
     document.addEventListener(
