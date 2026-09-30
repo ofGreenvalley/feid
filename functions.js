@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const musicButton =
         document.getElementById("musicButton");
 
-
     const messagePanel =
         document.getElementById("messagePanel");
 
@@ -24,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const musicPanel =
         document.getElementById("musicPanel");
-
 
     const playerButton =
         document.getElementById("playerButton");
@@ -46,12 +44,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       INICIAR
+       INICIAR + AUTOPLAY
     ========================== */
 
     if (pressButton) {
 
         pressButton.addEventListener("click", function () {
+
+            /*
+             * El clic del usuario en INICIAR
+             * permite intentar comenzar el audio.
+             */
+
+            if (audio) {
+
+                audio.play()
+                    .then(function () {
+
+                        if (playerButton) {
+                            playerButton.textContent = "❚❚";
+                        }
+
+                    })
+                    .catch(function (error) {
+
+                        console.log(
+                            "No se pudo iniciar la música:",
+                            error
+                        );
+
+                    });
+
+            }
+
+
+            /*
+             * Mostrar el interior.
+             */
 
             document.body.classList.add("leaving");
 
@@ -189,7 +218,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             event.stopPropagation();
 
-
             if (audio.paused) {
 
                 audio.play()
@@ -201,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     .catch(function (error) {
 
                         console.log(
-                            "No se pudo reproducir el audio:",
+                            "Error reproduciendo audio:",
                             error
                         );
 
@@ -219,23 +247,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =========================
-           PLAY
+           AUDIO REPRODUCIÉNDOSE
         ========================== */
 
         audio.addEventListener("play", function () {
 
-            playerButton.textContent = "❚❚";
+            if (playerButton) {
+                playerButton.textContent = "❚❚";
+            }
 
         });
 
 
         /* =========================
-           PAUSE
+           AUDIO PAUSADO
         ========================== */
 
         audio.addEventListener("pause", function () {
 
-            playerButton.textContent = "▶";
+            if (playerButton) {
+                playerButton.textContent = "▶";
+            }
 
         });
 
@@ -290,25 +322,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* =========================
-           FIN DE LA CANCIÓN
+           FINAL
         ========================== */
 
         audio.addEventListener("ended", function () {
 
-            playerButton.textContent = "▶";
+            if (playerButton) {
+                playerButton.textContent = "▶";
+            }
 
 
             if (progressFill) {
-
                 progressFill.style.width = "0%";
-
             }
 
 
             if (currentTime) {
-
                 currentTime.textContent = "0:00";
-
             }
 
         });
@@ -372,9 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function formatTime(seconds) {
 
         if (!seconds || isNaN(seconds)) {
-
             return "0:00";
-
         }
 
 
