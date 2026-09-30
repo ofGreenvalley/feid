@@ -23,18 +23,15 @@ body {
 
 .entry {
     position: relative;
-
     width: 100vw;
     height: 100dvh;
-
     overflow: hidden;
-
     background: #000;
 }
 
 
 /* =========================
-   IMAGEN DE LATVERIA + GUTS
+   IMAGEN
 ========================= */
 
 .entry-image {
@@ -49,7 +46,6 @@ body {
     background-repeat: no-repeat;
 
     opacity: 0;
-
     transform: scale(1.04);
 
     filter:
@@ -59,6 +55,62 @@ body {
 
     animation:
         imageReveal 4s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+
+/* =========================
+   GLITCH CRT / TELEVISIÓN
+========================= */
+
+.entry-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,.09) 0px,
+            rgba(255,255,255,.09) 1px,
+            rgba(0,0,0,.16) 2px,
+            rgba(0,0,0,.16) 4px
+        );
+
+    mix-blend-mode: screen;
+
+    opacity: .72;
+
+    animation:
+        scanlines 0.12s steps(2) infinite;
+}
+
+
+/* =========================
+   DISTORSIÓN DE TV
+========================= */
+
+.entry-image::after {
+    content: "";
+
+    position: absolute;
+    inset: -3px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,0,0,.035),
+            transparent 30%,
+            rgba(0,255,255,.035)
+        );
+
+    opacity: .7;
+
+    animation:
+        tvGlitch 3.8s infinite steps(1);
 }
 
 
@@ -91,6 +143,60 @@ body {
 
     animation:
         cinematicIn 4s ease forwards;
+}
+
+
+/* =========================
+   RUIDO CRT
+========================= */
+
+.entry::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+        repeating-radial-gradient(
+            circle at 20% 30%,
+            rgba(255,255,255,.055) 0px,
+            rgba(255,255,255,.055) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    opacity: .10;
+
+    animation:
+        noise 0.18s steps(2) infinite;
+}
+
+
+/* =========================
+   VIGNETTE CRT
+========================= */
+
+.entry::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 45%,
+            rgba(0,0,0,.28) 72%,
+            rgba(0,0,0,.82) 100%
+        );
 }
 
 
@@ -149,10 +255,6 @@ body {
 }
 
 
-/* =========================
-   PRESS — DESKTOP
-========================= */
-
 .press:hover {
 
     background:
@@ -163,10 +265,6 @@ body {
         rgba(255,255,255,.15);
 }
 
-
-/* =========================
-   PRESS — CLICK
-========================= */
 
 .press:active {
 
@@ -216,93 +314,23 @@ body {
 
 
 /* =========================
-   ANIMACIÓN CINEMÁTICA
+   SCANLINES
 ========================= */
 
-@keyframes cinematicIn {
+@keyframes scanlines {
 
-    from {
-        opacity: 0;
+    0% {
+        transform: translateY(0);
     }
 
-    to {
-        opacity: 1;
-    }
-}
-
-
-/* =========================
-   ANIMACIÓN PRESS
-========================= */
-
-@keyframes buttonAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateX(-50%)
-            translateY(10px);
+    25% {
+        transform: translateY(-2px);
     }
 
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateX(-50%)
-            translateY(0);
-    }
-}
-
-
-/* =========================
-   MÓVILES
-========================= */
-
-@media (max-width: 600px) {
-
-    .entry-image {
-
-        background-position:
-            center center;
+    50% {
+        transform: translateY(1px);
     }
 
-    .press {
-
-        bottom:
-            max(
-                30px,
-                env(safe-area-inset-bottom)
-            );
-
-        min-width: 138px;
-
-        min-height: 44px;
-
-        padding:
-            11px 22px;
-
-        font-size: 11px;
-
-        letter-spacing: .34em;
-
-        text-indent: .34em;
-    }
-}
-
-
-/* =========================
-   TELÉFONOS PEQUEÑOS
-========================= */
-
-@media (max-width: 380px) {
-
-    .press {
-
-        min-width: 130px;
-
-        font-size: 10px;
-    }
-}
+    75% {
+        transform: translateY(-1px);
+   
