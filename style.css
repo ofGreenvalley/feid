@@ -23,18 +23,12 @@ body {
 
 .entry {
     position: relative;
-
     width: 100vw;
     height: 100dvh;
-
     overflow: hidden;
-
     background: #000;
-
     z-index: 10;
-
-    transition:
-        opacity .8s ease;
+    transition: opacity .8s ease;
 }
 
 
@@ -44,18 +38,14 @@ body {
 
 .entry-image {
     position: absolute;
-
     inset: 0;
-
     z-index: 1;
 
     background-image:
         url("https://u.cubeupload.com/Eradicater/file000000007d7081f5.png");
 
     background-size: cover;
-
     background-position: center center;
-
     background-repeat: no-repeat;
 
     filter:
@@ -73,20 +63,15 @@ body {
 
 .tv-effect {
     position: absolute;
-
     inset: 0;
-
     z-index: 5;
-
     pointer-events: none;
-
     overflow: hidden;
 }
 
 
 .tv-scanlines {
     position: absolute;
-
     inset: 0;
 
     background:
@@ -101,13 +86,12 @@ body {
     opacity: .75;
 
     animation:
-        scan 0.12s linear infinite;
+        scan .12s linear infinite;
 }
 
 
 .tv-noise {
     position: absolute;
-
     inset: 0;
 
     background:
@@ -127,7 +111,6 @@ body {
 
 .tv-glitch {
     position: absolute;
-
     inset: 0;
 
     background:
@@ -153,7 +136,6 @@ body {
 
 .tv-flicker {
     position: absolute;
-
     inset: 0;
 
     background: #fff;
@@ -171,7 +153,6 @@ body {
 
 .cinematic {
     position: absolute;
-
     inset: 0;
 
     z-index: 10;
@@ -201,7 +182,8 @@ body {
 
     bottom: 60px !important;
 
-    transform: translateX(-50%) !important;
+    transform:
+        translateX(-50%) !important;
 
     display: flex !important;
 
@@ -332,42 +314,54 @@ body.leaving .inside {
 }
 
 
+/* =========================
+   FEID — CINEMATOGRÁFICO
+========================= */
+
 .identity-title {
     font-family:
-        "Helvetica Neue",
-        Helvetica,
-        Arial,
-        sans-serif;
+        "Times New Roman",
+        Times,
+        Georgia,
+        serif;
 
-    font-size: clamp(48px, 6vw, 78px);
+    font-size:
+        clamp(52px, 6vw, 82px);
 
-    font-weight: 200;
+    font-weight: 400;
 
-    letter-spacing: .035em;
+    letter-spacing: .12em;
 
     line-height: 1;
 
     color:
         rgba(255,255,255,.94);
 
+    text-transform: uppercase;
+
     animation:
         titleBlink 4s infinite;
 }
 
 
+/* =========================
+   SUBTÍTULO
+========================= */
+
 .identity-subtitle {
-    margin-top: 12px;
+    margin-top: 14px;
 
     font-family:
-        Georgia,
         "Times New Roman",
+        Times,
+        Georgia,
         serif;
 
-    font-size: 12px;
+    font-size: 11px;
 
-    font-weight: 300;
+    font-weight: 400;
 
-    letter-spacing: .18em;
+    letter-spacing: .24em;
 
     color:
         rgba(255,255,255,.42);
@@ -381,7 +375,8 @@ body.leaving .inside {
 .profile-area {
     position: absolute;
 
-    right: calc(50% - 340px);
+    right:
+        calc(50% - 340px);
 
     top: 50%;
 
@@ -405,7 +400,8 @@ body.leaving .inside {
 
     padding: 0;
 
-    border: 1px solid rgba(255,255,255,.28);
+    border:
+        1px solid rgba(255,255,255,.28);
 
     border-radius: 24px;
 
@@ -461,7 +457,8 @@ body.leaving .inside {
 
     height: 30px;
 
-    border: 1px solid rgba(255,255,255,.22);
+    border:
+        1px solid rgba(255,255,255,.22);
 
     border-radius: 9px;
 
@@ -526,7 +523,8 @@ body.leaving .inside {
         transform .25s ease,
         visibility .25s ease;
 
-    border: 1px solid rgba(255,255,255,.16);
+    border:
+        1px solid rgba(255,255,255,.16);
 
     border-radius: 14px;
 
@@ -561,7 +559,8 @@ body.leaving .inside {
 ========================= */
 
 .message-panel {
-    right: calc(50% - 200px);
+    right:
+        calc(50% - 200px);
 
     top: 50%;
 
@@ -586,13 +585,15 @@ body.leaving .inside {
 ========================= */
 
 .friends-panel {
-    right: calc(50% - 195px);
+    right:
+        calc(50% - 195px);
 
     top: 50%;
 
     width: 205px;
 
-    padding: 15px 16px;
+    padding:
+        15px 16px;
 }
 
 
@@ -684,13 +685,16 @@ body.leaving .inside {
 ========================= */
 
 .music-panel {
-    right: calc(50% - 195px);
+    right:
+        calc(50% - 195px);
 
-    top: calc(50% + 115px);
+    top:
+        calc(50% + 115px);
 
     width: 235px;
 
-    padding: 14px 15px;
+    padding:
+        14px 15px;
 }
 
 
@@ -748,7 +752,8 @@ body.leaving .inside {
 
     height: 32px;
 
-    border: 1px solid rgba(255,255,255,.28);
+    border:
+        1px solid rgba(255,255,255,.28);
 
     border-radius: 50%;
 
@@ -844,65 +849,51 @@ body.leaving .inside {
 
 
 /* =========================
-   YOUTUBE OCULTO
-========================= */
-
-.youtube-hidden {
-    position: absolute;
-
-    width: 1px;
-
-    height: 1px;
-
-    left: -10px;
-
-    top: -10px;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    overflow: hidden;
-}
-
-
-/* =========================
    ANIMACIONES
 ========================= */
 
 @keyframes scan {
 
     from {
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 
     to {
-        transform: translateY(4px);
+        transform:
+            translateY(4px);
     }
+
 }
 
 
 @keyframes noise {
 
     0% {
-        transform: translate(0,0);
+        transform:
+            translate(0,0);
     }
 
     25% {
-        transform: translate(2%,-2%);
+        transform:
+            translate(2%,-2%);
     }
 
     50% {
-        transform: translate(-2%,2%);
+        transform:
+            translate(-2%,2%);
     }
 
     75% {
-        transform: translate(1%,1%);
+        transform:
+            translate(1%,1%);
     }
 
     100% {
-        transform: translate(0,0);
+        transform:
+            translate(0,0);
     }
+
 }
 
 
@@ -911,44 +902,61 @@ body.leaving .inside {
     0%,
     70%,
     100% {
+
         transform:
             translateX(0);
+
     }
 
     71% {
+
         transform:
             translateX(-15px);
+
     }
 
     72% {
+
         transform:
             translateX(18px);
+
     }
 
     73% {
+
         transform:
             translateX(-8px);
+
     }
 
     74% {
+
         transform:
             translateX(5px);
+
     }
 
     75% {
+
         transform:
             translateX(0);
+
     }
 
     90% {
+
         transform:
             translateX(8px);
+
     }
 
     91% {
+
         transform:
             translateX(0);
+
     }
+
 }
 
 
@@ -957,24 +965,35 @@ body.leaving .inside {
     0%,
     85%,
     100% {
+
         opacity: 0;
+
     }
 
     86% {
+
         opacity: .12;
+
     }
 
     87% {
+
         opacity: 0;
+
     }
 
     93% {
+
         opacity: .08;
+
     }
 
     94% {
+
         opacity: 0;
+
     }
+
 }
 
 
@@ -983,28 +1002,41 @@ body.leaving .inside {
     0%,
     45%,
     100% {
+
         opacity: .94;
+
     }
 
     46% {
+
         opacity: .70;
+
     }
 
     47% {
+
         opacity: .94;
+
     }
 
     82% {
+
         opacity: .94;
+
     }
 
     83% {
+
         opacity: .65;
+
     }
 
     84% {
+
         opacity: .94;
+
     }
+
 }
 
 
@@ -1015,52 +1047,68 @@ body.leaving .inside {
 @media (max-width: 600px) {
 
     .identity {
+
         left: 8vw;
 
         width: auto;
 
         max-width: 45vw;
+
     }
 
 
     .identity-title {
-        font-size: clamp(40px, 12vw, 58px);
+
+        font-size:
+            clamp(40px, 12vw, 58px);
+
     }
 
 
     .profile-area {
+
         right: 7vw;
+
     }
 
 
     .avatar-button {
+
         width: 78px;
 
         height: 78px;
 
         border-radius: 20px;
+
     }
 
 
     .side-button {
+
         width: 28px;
 
         height: 28px;
+
     }
 
 
     .message-panel,
     .friends-panel {
+
         right: 115px;
+
     }
 
 
     .music-panel {
+
         right: 8vw;
 
-        top: calc(50% + 105px);
+        top:
+            calc(50% + 105px);
 
         width: 220px;
+
     }
 
 }
