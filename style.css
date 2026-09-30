@@ -1,7 +1,3 @@
-/* =========================================
-   FEID — MULTIVERSE XATSPACE
-   ========================================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -13,10 +9,13 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
+
     background: #000;
     color: #fff;
+
+    font-family: Arial, Helvetica, sans-serif;
 }
+
 
 /* =========================================
    INTRO
@@ -25,49 +24,24 @@ body {
 .intro {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+
+    z-index: 9999;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     background:
-        radial-gradient(circle at center, rgba(0, 255, 120, .12), transparent 35%),
-        linear-gradient(135deg, #020403, #000 55%, #03170c);
+        radial-gradient(
+            circle at center,
+            rgba(0,255,100,.12),
+            transparent 35%
+        ),
+        #010201;
 
     transition:
-        opacity 1s ease,
-        visibility 1s ease;
-}
-
-.intro::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            rgba(0, 255, 120, .025) 1px,
-            transparent 1px
-        );
-
-    background-size: 100% 4px;
-    pointer-events: none;
-}
-
-.intro::after {
-    content: "";
-    position: absolute;
-    width: 420px;
-    height: 420px;
-
-    border-radius: 50%;
-
-    background: #00ff73;
-    filter: blur(150px);
-    opacity: .08;
-
-    animation: introGlow 4s infinite alternate;
+        opacity .8s ease,
+        visibility .8s ease;
 }
 
 .intro.hidden {
@@ -76,65 +50,62 @@ body {
 }
 
 .content {
-    position: relative;
-    z-index: 2;
-
     text-align: center;
 }
 
 .content h1 {
-    font-size: clamp(70px, 13vw, 150px);
-    font-weight: 900;
-    letter-spacing: .25em;
+    font-size: clamp(70px, 14vw, 150px);
 
-    color: #fff;
+    letter-spacing: .2em;
 
     text-shadow:
-        0 0 10px rgba(255,255,255,.7),
-        0 0 30px rgba(0,255,100,.4),
-        0 0 70px rgba(0,255,100,.25);
-
-    animation: titleGlitch 4s infinite;
+        0 0 15px rgba(255,255,255,.5),
+        0 0 40px rgba(0,255,100,.3);
 }
 
 .content p {
     margin-top: 15px;
 
-    font-size: 13px;
-    letter-spacing: 4px;
-
     color: rgba(255,255,255,.65);
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
 }
 
 #start {
-    margin-top: 45px;
+    margin-top: 40px;
 
-    padding: 14px 42px;
+    padding: 14px 40px;
 
-    border: 1px solid rgba(0,255,110,.7);
+    border: 1px solid #00ff73;
+
     background: rgba(0,255,100,.04);
 
     color: #fff;
 
-    font-size: 13px;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 
     cursor: pointer;
 
     transition: .3s;
-
-    box-shadow:
-        0 0 15px rgba(0,255,100,.12);
 }
 
 #start:hover {
-    background: rgba(0,255,100,.15);
+    background: rgba(0,255,100,.12);
 
     box-shadow:
-        0 0 25px rgba(0,255,100,.4),
-        inset 0 0 20px rgba(0,255,100,.08);
+        0 0 25px rgba(0,255,100,.3);
+}
 
-    transform: scale(1.05);
+.design-signature {
+    margin-top: 25px;
+
+    color: rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
 }
 
 
@@ -146,22 +117,15 @@ body {
     position: fixed;
     inset: 0;
 
-    min-height: 100vh;
+    overflow: hidden;
 
     background:
         radial-gradient(
-            circle at 50% 45%,
+            circle at center,
             rgba(0,255,100,.07),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(0,255,150,.04),
-            transparent 25%
+            transparent 35%
         ),
         #020302;
-
-    overflow: hidden;
 }
 
 .home::before {
@@ -183,25 +147,6 @@ body {
 
     background-size: 45px 45px;
 
-    opacity: .35;
-
-    pointer-events: none;
-}
-
-.home::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        repeating-linear-gradient(
-            0deg,
-            transparent 0px,
-            transparent 3px,
-            rgba(0,255,100,.018) 4px
-        );
-
     pointer-events: none;
 }
 
@@ -219,28 +164,27 @@ body {
 
     height: 75px;
 
+    z-index: 100;
+
     display: flex;
     align-items: center;
 
     padding: 0 35px;
 
-    border-bottom: 1px solid rgba(0,255,100,.08);
+    border-bottom: 1px solid rgba(0,255,100,.1);
 
-    background: rgba(0,0,0,.25);
-
-    backdrop-filter: blur(10px);
-
-    z-index: 20;
+    background: rgba(0,0,0,.3);
 }
 
 .brand {
-    font-size: 19px;
-    font-weight: 800;
+    font-size: 18px;
+
+    font-weight: bold;
 
     letter-spacing: 8px;
 
     text-shadow:
-        0 0 12px rgba(0,255,100,.4);
+        0 0 15px rgba(0,255,100,.4);
 }
 
 
@@ -254,77 +198,76 @@ body {
     top: 92px;
     right: 35px;
 
-    z-index: 50;
+    z-index: 500;
 }
 
 .menu-main {
-    min-width: 115px;
+    width: 120px;
 
-    padding: 11px 15px;
+    padding: 12px 15px;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 18px;
+    justify-content: space-between;
 
-    border: 1px solid rgba(0,255,100,.3);
+    border: 1px solid rgba(0,255,100,.4);
 
-    background: rgba(0,0,0,.65);
+    background: rgba(0,0,0,.9);
 
     color: #fff;
 
-    font-size: 11px;
-    letter-spacing: 3px;
-
     cursor: pointer;
 
-    transition: .3s;
-}
+    font-size: 10px;
 
-.menu-main span {
-    color: #00ff73;
-    font-size: 17px;
+    letter-spacing: 3px;
 
-    transition: .3s;
+    transition: .25s;
 }
 
 .menu-main:hover {
     border-color: #00ff73;
 
     box-shadow:
-        0 0 20px rgba(0,255,100,.15);
+        0 0 20px rgba(0,255,100,.2);
 }
 
-.menu.open .menu-main span {
+.menu-symbol {
+    color: #00ff73;
+
+    font-size: 18px;
+
+    line-height: 10px;
+
+    transition: transform .3s;
+}
+
+.menu.open .menu-symbol {
     transform: rotate(45deg);
 }
 
 .menu-options {
-    display: flex;
-    flex-direction: column;
+    display: none;
 
     margin-top: 5px;
 
-    opacity: 0;
-    visibility: hidden;
+    width: 120px;
 
-    transform: translateY(-10px);
+    border: 1px solid rgba(0,255,100,.25);
 
-    transition: .3s;
-
-    background: rgba(0,0,0,.88);
-
-    border: 1px solid rgba(0,255,100,.2);
+    background: rgba(0,0,0,.96);
 }
 
 .menu.open .menu-options {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    display: block;
 }
 
 .menu-options button {
-    padding: 13px 22px;
+    display: block;
+
+    width: 100%;
+
+    padding: 14px 12px;
 
     border: 0;
     border-bottom: 1px solid rgba(0,255,100,.08);
@@ -335,32 +278,65 @@ body {
 
     text-align: left;
 
-    font-size: 10px;
-    letter-spacing: 2px;
-
     cursor: pointer;
 
-    transition: .25s;
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .2s;
 }
 
 .menu-options button:hover {
-    padding-left: 28px;
-
     color: #fff;
 
-    background: rgba(0,255,100,.08);
+    background: rgba(0,255,100,.1);
+
+    padding-left: 18px;
 }
 
 
 /* =========================================
-   CENTRAL
+   SECTIONS
+   ========================================= */
+
+.sections {
+    position: absolute;
+
+    top: 75px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 10;
+}
+
+.section {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+}
+
+.section.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =========================================
+   CENTRAL HOME
    ========================================= */
 
 .central {
-    position: relative;
-
-    z-index: 5;
-
     width: 100%;
     height: 100%;
 
@@ -371,17 +347,13 @@ body {
 
     gap: 55px;
 
-    padding: 100px 40px 40px;
+    padding: 30px;
 }
 
 
 /* =========================================
    AVATAR
    ========================================= */
-
-.avatar-container {
-    position: relative;
-}
 
 .avatar-frame {
     position: relative;
@@ -391,19 +363,10 @@ body {
 
     padding: 9px;
 
-    border: 1px solid rgba(0,255,100,.25);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0,255,100,.05),
-            rgba(0,0,0,.6)
-        );
+    border: 1px solid rgba(0,255,100,.3);
 
     box-shadow:
-        0 0 35px rgba(0,255,100,.08);
-
-    animation: avatarFloat 5s ease-in-out infinite;
+        0 0 30px rgba(0,255,100,.08);
 }
 
 .avatar {
@@ -412,9 +375,7 @@ body {
 
     overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,.12);
-
-    background: #050505;
+    border: 1px solid rgba(255,255,255,.1);
 }
 
 .avatar img {
@@ -422,20 +383,6 @@ body {
     height: 100%;
 
     object-fit: cover;
-
-    filter:
-        contrast(1.08)
-        saturate(.85);
-
-    transition: .5s;
-}
-
-.avatar-frame:hover .avatar img {
-    transform: scale(1.05);
-
-    filter:
-        contrast(1.15)
-        saturate(1.1);
 }
 
 
@@ -448,9 +395,8 @@ body {
     height: 18px;
 
     border-color: #00ff73;
-    border-style: solid;
 
-    z-index: 3;
+    border-style: solid;
 }
 
 .top-left {
@@ -483,47 +429,38 @@ body {
 
 
 /* =========================================
-   MULTIVERSE PANEL
+   MULTIVERSE
    ========================================= */
 
 .universe-panel {
-    position: relative;
-
     width: min(620px, 55vw);
 
     border: 1px solid rgba(0,255,100,.25);
 
-    background:
-        rgba(0,0,0,.65);
+    background: rgba(0,0,0,.7);
 
     box-shadow:
-        0 0 40px rgba(0,255,100,.06),
-        inset 0 0 40px rgba(0,255,100,.025);
-
-    backdrop-filter: blur(10px);
+        0 0 40px rgba(0,255,100,.06);
 }
 
 .panel-header {
     height: 45px;
 
-    padding: 0 16px;
+    padding: 0 15px;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
-    border-bottom: 1px solid rgba(0,255,100,.15);
+    border-bottom: 1px solid rgba(0,255,100,.12);
 
-    font-size: 10px;
+    font-size: 9px;
+
     letter-spacing: 3px;
 }
 
 .panel-status {
     color: #00ff73;
-
-    font-size: 9px;
-
-    animation: statusBlink 1.5s infinite;
 }
 
 .screen {
@@ -535,26 +472,21 @@ body {
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(0,255,120,.09),
+            circle,
+            rgba(0,255,100,.1),
             transparent 45%
         ),
         #010302;
 }
 
-
-/* =========================================
-   REALITIES
-   ========================================= */
-
 .reality {
     position: absolute;
 
-    padding: 5px 8px;
+    padding: 5px;
 
-    border: 1px solid rgba(0,255,100,.18);
+    border: 1px solid rgba(0,255,100,.15);
 
-    color: rgba(255,255,255,.35);
+    color: rgba(255,255,255,.4);
 
     font-size: 8px;
 
@@ -562,36 +494,28 @@ body {
 }
 
 .reality-one {
-    top: 35px;
-    left: 30px;
-
-    animation: realityOne 5s infinite;
+    top: 30px;
+    left: 25px;
 }
 
 .reality-two {
-    right: 35px;
-    top: 80px;
-
-    animation: realityTwo 7s infinite;
+    top: 70px;
+    right: 25px;
 }
 
 .reality-three {
-    bottom: 35px;
+    bottom: 30px;
     left: 45%;
-
-    animation: realityThree 4s infinite;
 }
 
 
-/* =========================================
-   CORE
-   ========================================= */
+/* CORE */
 
 .core {
     position: absolute;
 
-    left: 50%;
     top: 50%;
+    left: 50%;
 
     width: 180px;
     height: 180px;
@@ -610,7 +534,7 @@ body {
 }
 
 .ring-one {
-    animation: rotateCore 8s linear infinite;
+    animation: rotate 8s linear infinite;
 }
 
 .ring-two {
@@ -618,45 +542,41 @@ body {
 
     border-style: dashed;
 
-    animation: rotateCoreReverse 5s linear infinite;
+    animation: rotateReverse 5s linear infinite;
 }
 
 .ring-three {
     inset: 38px;
 
-    border-color: rgba(0,255,100,.5);
+    border-color: rgba(0,255,100,.6);
 
-    animation: rotateCore 3s linear infinite;
+    animation: rotate 3s linear infinite;
 }
 
 .core-energy {
     position: absolute;
 
-    inset: 58px;
+    inset: 60px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            #baffd3 0%,
-            #00ff73 12%,
-            rgba(0,255,100,.35) 35%,
+            #fff,
+            #00ff73 25%,
             transparent 70%
         );
 
     box-shadow:
-        0 0 25px #00ff73,
-        0 0 70px rgba(0,255,100,.5),
-        0 0 120px rgba(0,255,100,.2);
+        0 0 30px #00ff73,
+        0 0 80px rgba(0,255,100,.5);
 
-    animation: corePulse 1.8s ease-in-out infinite;
+    animation: pulse 1.8s infinite;
 }
 
 
-/* =========================================
-   PARTICLES
-   ========================================= */
+/* PARTICLES */
 
 .core-particles span {
     position: absolute;
@@ -669,8 +589,6 @@ body {
     border-radius: 50%;
 
     box-shadow: 0 0 8px #00ff73;
-
-    animation: particleOrbit 5s linear infinite;
 }
 
 .core-particles span:nth-child(1) {
@@ -681,61 +599,50 @@ body {
 .core-particles span:nth-child(2) {
     left: 75%;
     top: 25%;
-    animation-delay: -.5s;
 }
 
 .core-particles span:nth-child(3) {
     left: 82%;
     top: 65%;
-    animation-delay: -1s;
 }
 
 .core-particles span:nth-child(4) {
     left: 20%;
     top: 70%;
-    animation-delay: -1.5s;
 }
 
 .core-particles span:nth-child(5) {
     left: 50%;
     top: 15%;
-    animation-delay: -2s;
 }
 
 .core-particles span:nth-child(6) {
     left: 50%;
     top: 85%;
-    animation-delay: -2.5s;
 }
 
 .core-particles span:nth-child(7) {
     left: 10%;
     top: 50%;
-    animation-delay: -3s;
 }
 
 .core-particles span:nth-child(8) {
     left: 90%;
     top: 50%;
-    animation-delay: -3.5s;
 }
 
 .core-particles span:nth-child(9) {
     left: 32%;
     top: 18%;
-    animation-delay: -4s;
 }
 
 .core-particles span:nth-child(10) {
     left: 68%;
     top: 82%;
-    animation-delay: -4.5s;
 }
 
 
-/* =========================================
-   GLITCH
-   ========================================= */
+/* GLITCH */
 
 .glitch-bar {
     position: absolute;
@@ -744,9 +651,9 @@ body {
 
     background: #00ff73;
 
-    opacity: .4;
+    opacity: .5;
 
-    animation: glitchMove 3s infinite;
+    animation: glitch 3s infinite;
 }
 
 .glitch-one {
@@ -756,25 +663,19 @@ body {
 }
 
 .glitch-two {
-    width: 160px;
+    width: 150px;
     top: 65%;
     right: 5%;
-
-    animation-delay: -1s;
 }
 
 .glitch-three {
     width: 60px;
     top: 45%;
     left: 70%;
-
-    animation-delay: -2s;
 }
 
 
-/* =========================================
-   SCANLINES
-   ========================================= */
+/* SCAN */
 
 .screen-scanline {
     position: absolute;
@@ -796,333 +697,38 @@ body {
     position: absolute;
 
     left: 0;
-    right: 0;
 
-    height: 8px;
+    width: 100%;
 
-    background: rgba(0,255,100,.08);
+    height: 5px;
 
-    animation: signalScan 4s linear infinite;
+    background: rgba(0,255,100,.1);
 
-    pointer-events: none;
+    animation: scan 4s linear infinite;
 }
 
 
-/* =========================================
-   FOOTER
-   ========================================= */
+/* FOOTER */
 
 .panel-footer {
     min-height: 42px;
 
-    padding: 0 15px;
+    padding: 8px 15px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
-    gap: 15px;
+    gap: 10px;
 
-    border-top: 1px solid rgba(0,255,100,.12);
+    border-top: 1px solid rgba(0,255,100,.1);
 
     color: rgba(255,255,255,.4);
 
-    font-size: 8px;
+    font-size: 7px;
 
-    letter-spacing: 1.5px;
-}
-
-
-/* =========================================
-   ANIMATIONS
-   ========================================= */
-
-@keyframes introGlow {
-    from {
-        transform: scale(.8);
-        opacity: .04;
-    }
-
-    to {
-        transform: scale(1.15);
-        opacity: .11;
-    }
-}
-
-@keyframes titleGlitch {
-    0%, 90%, 100% {
-        transform: translate(0);
-    }
-
-    92% {
-        transform: translate(-2px, 1px);
-    }
-
-    94% {
-        transform: translate(3px, -1px);
-    }
-
-    96% {
-        transform: translate(-1px, 0);
-    }
-}
-
-@keyframes avatarFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-7px);
-    }
-}
-
-@keyframes rotateCore {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes rotateCoreReverse {
-    from {
-        transform: rotate(360deg);
-    }
-
-    to {
-        transform: rotate(0deg);
-    }
-}
-
-@keyframes corePulse {
-    0%, 100% {
-        transform: scale(.85);
-        opacity: .75;
-    }
-
-    50% {
-        transform: scale(1.12);
-        opacity: 1;
-    }
-}
-
-@keyframes statusBlink {
-    0%, 100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: .3;
-    }
-}
-
-@keyframes glitchMove {
-    0%, 80%, 100% {
-        transform: translateX(0);
-        opacity: .15;
-    }
-
-    82% {
-        transform: translateX(70px);
-        opacity: .8;
-    }
-
-    84% {
-        transform: translateX(-30px);
-        opacity: .3;
-    }
-}
-
-@keyframes signalScan {
-    from {
-        top: -10px;
-    }
-
-    to {
-        top: 100%;
-    }
-}
-
-@keyframes realityOne {
-    0%, 100% {
-        opacity: .25;
-    }
-
-    50% {
-        opacity: .7;
-    }
-}
-
-@keyframes realityTwo {
-    0%, 100% {
-        transform: translate(0);
-        opacity: .2;
-    }
-
-    50% {
-        transform: translate(-8px, 5px);
-        opacity: .6;
-    }
-}
-
-@keyframes realityThree {
-    0%, 100% {
-        opacity: .15;
-    }
-
-    50% {
-        opacity: .7;
-    }
-}
-
-@keyframes particleOrbit {
-    0% {
-        transform: rotate(0deg) translateX(0);
-    }
-
-    50% {
-        transform: translate(15px, -10px);
-    }
-
-    100% {
-        transform: rotate(360deg) translateX(0);
-    }
-}
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 800px) {
-
-    .topbar {
-        height: 62px;
-        padding: 0 20px;
-    }
-
-    .brand {
-        font-size: 16px;
-    }
-
-    .menu {
-        top: 78px;
-        right: 20px;
-    }
-
-    .central {
-        flex-direction: column;
-
-        gap: 25px;
-
-        padding:
-            100px
-            20px
-            25px;
-
-        overflow-y: auto;
-    }
-
-    .avatar-frame {
-        width: 145px;
-        height: 145px;
-    }
-
-    .universe-panel {
-        width: 100%;
-        max-width: 580px;
-    }
-
-    .screen {
-        height: 260px;
-    }
-
-    .core {
-        width: 145px;
-        height: 145px;
-    }
-
-    .panel-footer {
-        flex-wrap: wrap;
-
-        padding: 10px 12px;
-    }
-
-    .content h1 {
-        letter-spacing: .15em;
-    }
-
-    .content p {
-        font-size: 9px;
-        letter-spacing: 2px;
-    }
-}
-/* =========================================
-   SECTION SYSTEM
-   ========================================= */
-
-.sections {
-    position: absolute;
-    inset: 75px 0 0;
-
-    z-index: 5;
-}
-
-.section {
-    position: absolute;
-    inset: 0;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform: translateY(12px);
-
-    transition:
-        opacity .35s ease,
-        transform .35s ease,
-        visibility .35s;
-}
-
-.section.active {
-    opacity: 1;
-    visibility: visible;
-
-    transform: translateY(0);
-}
-
-
-/* =========================================
-   SECTION TITLE
-   ========================================= */
-
-.section-title {
-    width: 100%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 25px;
-
-    padding-bottom: 12px;
-
-    border-bottom: 1px solid rgba(0,255,100,.15);
-}
-
-.section-title span {
-    font-size: 18px;
-    letter-spacing: 5px;
-    font-weight: 700;
-}
-
-.section-title small {
-    color: #00ff73;
-
-    font-size: 8px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 
@@ -1130,26 +736,49 @@ body {
    FRIENDS
    ========================================= */
 
-.friends-panel {
+.friends-panel,
+.music-panel {
     position: absolute;
 
-    left: 50%;
     top: 50%;
-
-    width: min(700px, 85vw);
+    left: 50%;
 
     transform: translate(-50%, -50%);
+
+    width: min(700px, 85vw);
 
     padding: 30px;
 
     border: 1px solid rgba(0,255,100,.2);
 
-    background: rgba(0,0,0,.65);
+    background: rgba(0,0,0,.75);
 
     box-shadow:
         0 0 40px rgba(0,255,100,.06);
+}
 
-    backdrop-filter: blur(10px);
+.section-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding-bottom: 15px;
+
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid rgba(0,255,100,.12);
+}
+
+.section-title span {
+    font-size: 16px;
+
+    letter-spacing: 4px;
+}
+
+.section-title small {
+    color: #00ff73;
+
+    font-size: 8px;
 }
 
 .friends-grid {
@@ -1161,28 +790,17 @@ body {
 }
 
 .friend-card {
-    min-height: 75px;
-
     display: flex;
+
     align-items: center;
 
     gap: 15px;
 
-    padding: 12px;
+    padding: 14px;
 
     border: 1px solid rgba(0,255,100,.12);
 
     background: rgba(0,255,100,.025);
-
-    transition: .3s;
-}
-
-.friend-card:hover {
-    border-color: rgba(0,255,100,.5);
-
-    background: rgba(0,255,100,.07);
-
-    transform: translateX(5px);
 }
 
 .friend-avatar {
@@ -1190,6 +808,7 @@ body {
     height: 45px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -1198,9 +817,6 @@ body {
     color: #00ff73;
 
     font-size: 10px;
-
-    box-shadow:
-        inset 0 0 15px rgba(0,255,100,.05);
 }
 
 .friend-card strong {
@@ -1214,41 +830,17 @@ body {
 .friend-card small {
     display: block;
 
-    margin-top: 7px;
+    margin-top: 6px;
 
     color: #00ff73;
 
     font-size: 8px;
-
-    letter-spacing: 1px;
 }
 
 
 /* =========================================
    MUSIC
    ========================================= */
-
-.music-panel {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: min(700px, 88vw);
-
-    transform: translate(-50%, -50%);
-
-    padding: 30px;
-
-    border: 1px solid rgba(0,255,100,.2);
-
-    background: rgba(0,0,0,.7);
-
-    box-shadow:
-        0 0 50px rgba(0,255,100,.07);
-
-    backdrop-filter: blur(12px);
-}
 
 .music-player {
     display: flex;
@@ -1258,18 +850,16 @@ body {
     gap: 30px;
 }
 
-
-/* ALBUM */
-
 .album-art {
     position: relative;
-
-    flex-shrink: 0;
 
     width: 190px;
     height: 190px;
 
+    flex-shrink: 0;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -1284,15 +874,11 @@ body {
             #020402 65%
         );
 
-    color: white;
+    font-size: 27px;
 
-    font-size: 28px;
-    font-weight: 900;
+    font-weight: bold;
 
     letter-spacing: 5px;
-
-    box-shadow:
-        0 0 35px rgba(0,255,100,.1);
 }
 
 .album-glow {
@@ -1309,16 +895,14 @@ body {
 
     opacity: .25;
 
-    animation: albumPulse 2s infinite alternate;
+    animation: pulse 2s infinite alternate;
 }
 
 .album-art span {
     position: relative;
+
     z-index: 2;
 }
-
-
-/* MUSIC INFO */
 
 .music-info {
     flex: 1;
@@ -1350,12 +934,7 @@ body {
     letter-spacing: 2px;
 }
 
-
-/* PROGRESS */
-
 .music-progress {
-    position: relative;
-
     width: 100%;
     height: 3px;
 
@@ -1372,10 +951,7 @@ body {
 
     background: #00ff73;
 
-    box-shadow:
-        0 0 8px #00ff73;
-
-    transition: width .1s linear;
+    box-shadow: 0 0 8px #00ff73;
 }
 
 .music-time {
@@ -1383,26 +959,22 @@ body {
 
     justify-content: space-between;
 
-    margin-top: 8px;
+    margin-top: 7px;
 
     color: rgba(255,255,255,.35);
 
     font-size: 8px;
 }
 
-
-/* CONTROLS */
-
 .music-controls {
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
+    align-items: center;
 
     gap: 15px;
 
-    margin-top: 25px;
+    margin-top: 20px;
 }
 
 .music-controls button {
@@ -1413,20 +985,9 @@ body {
 
     background: transparent;
 
-    color: white;
+    color: #fff;
 
     cursor: pointer;
-
-    transition: .25s;
-}
-
-.music-controls button:hover {
-    border-color: #00ff73;
-
-    color: #00ff73;
-
-    box-shadow:
-        0 0 15px rgba(0,255,100,.15);
 }
 
 .music-controls .play-button {
@@ -1440,30 +1001,119 @@ body {
 
 
 /* =========================================
-   MUSIC ANIMATION
+   ANIMACIONES
    ========================================= */
 
-@keyframes albumPulse {
+@keyframes rotate {
     from {
-        transform: scale(.8);
-        opacity: .15;
+        transform: rotate(0deg);
     }
 
     to {
-        transform: scale(1.2);
-        opacity: .35;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateReverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(.85);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes glitch {
+    0%, 85%, 100% {
+        transform: translateX(0);
+    }
+
+    90% {
+        transform: translateX(60px);
+    }
+
+    94% {
+        transform: translateX(-20px);
+    }
+}
+
+@keyframes scan {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 100%;
     }
 }
 
 
 /* =========================================
-   MOBILE SECTIONS
+   MOBILE
    ========================================= */
 
-@media (max-width: 650px) {
+@media (max-width: 800px) {
+
+    .topbar {
+        height: 65px;
+
+        padding: 0 20px;
+    }
+
+    .menu {
+        top: 80px;
+        right: 20px;
+    }
 
     .sections {
-        inset: 62px 0 0;
+        top: 65px;
+    }
+
+    .central {
+        flex-direction: column;
+
+        gap: 25px;
+
+        overflow-y: auto;
+
+        padding: 25px 20px;
+    }
+
+    .avatar-frame {
+        width: 145px;
+        height: 145px;
+    }
+
+    .universe-panel {
+        width: 100%;
+    }
+
+    .screen {
+        height: 250px;
+    }
+
+    .core {
+        width: 145px;
+        height: 145px;
+    }
+
+    .panel-footer {
+        flex-wrap: wrap;
+    }
+
+    .friends-grid {
+        grid-template-columns: 1fr;
     }
 
     .friends-panel,
@@ -1473,17 +1123,13 @@ body {
         padding: 20px;
     }
 
-    .friends-grid {
-        grid-template-columns: 1fr;
-    }
-
     .music-player {
         flex-direction: column;
     }
 
     .album-art {
-        width: 150px;
-        height: 150px;
+        width: 145px;
+        height: 145px;
     }
 
     .music-info {
