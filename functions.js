@@ -1,18 +1,18 @@
-/* =========================================
-   FEID — MULTIVERSE SYSTEM
-   ========================================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded", () => {
+    /* =========================================
+       ELEMENTOS
+       ========================================= */
 
     const intro = document.getElementById("intro");
     const startButton = document.getElementById("start");
 
-    const menu = document.querySelector(".menu");
+    const menu = document.getElementById("menu");
     const menuButton = document.getElementById("menuButton");
 
     const menuOptions =
         document.querySelectorAll(
-            ".menu-options button"
+            "#menuOptions button"
         );
 
     const sections =
@@ -20,23 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       INICIAR
+       BOTÓN INICIAR
        ========================================= */
 
-    if (startButton && intro) {
+    if (startButton) {
 
-        startButton.addEventListener("click", () => {
+        startButton.addEventListener("click", function () {
 
             startButton.disabled = true;
 
             startButton.textContent =
                 "CONNECTING...";
 
-            setTimeout(() => {
+            setTimeout(function () {
 
                 intro.classList.add("hidden");
 
-            }, 900);
+            }, 700);
 
         });
 
@@ -47,80 +47,95 @@ document.addEventListener("DOMContentLoaded", () => {
        MENÚ
        ========================================= */
 
-    if (menuButton && menu) {
+    if (menuButton) {
 
-        menuButton.addEventListener("click", (event) => {
+        menuButton.addEventListener(
+            "click",
+            function (event) {
 
-            event.stopPropagation();
+                event.stopPropagation();
 
-            menu.classList.toggle("open");
+                menu.classList.toggle("open");
 
-        });
+            }
+        );
 
     }
 
 
     /* =========================================
-       CAMBIO DE SECCIONES
+       CAMBIAR SECCIÓN
        ========================================= */
 
-    menuOptions.forEach(button => {
+    menuOptions.forEach(function (button) {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+            "click",
+            function (event) {
 
-            const target =
-                button.dataset.section;
+                event.stopPropagation();
 
-
-            sections.forEach(section => {
-
-                section.classList.remove("active");
-
-            });
-
-
-            const targetSection =
-                document.getElementById(
-                    `section-${target}`
-                );
+                const target =
+                    button.getAttribute(
+                        "data-section"
+                    );
 
 
-            if (targetSection) {
+                sections.forEach(function (section) {
 
-                targetSection.classList.add(
-                    "active"
-                );
+                    section.classList.remove(
+                        "active"
+                    );
+
+                });
+
+
+                const selected =
+                    document.getElementById(
+                        "section-" + target
+                    );
+
+
+                if (selected) {
+
+                    selected.classList.add(
+                        "active"
+                    );
+
+                }
+
+
+                menu.classList.remove("open");
+
+            }
+        );
+
+    });
+
+
+    /* =========================================
+       CERRAR MENÚ AL HACER CLICK AFUERA
+       ========================================= */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                menu &&
+                !menu.contains(event.target)
+            ) {
+
+                menu.classList.remove("open");
 
             }
 
-
-            menu.classList.remove("open");
-
-        });
-
-    });
-
-
-    /* =========================================
-       CERRAR MENÚ FUERA
-       ========================================= */
-
-    document.addEventListener("click", event => {
-
-        if (
-            menu &&
-            !menu.contains(event.target)
-        ) {
-
-            menu.classList.remove("open");
-
         }
-
-    });
+    );
 
 
     /* =========================================
-       REALIDADES
+       CAMBIO DE REALIDADES
        ========================================= */
 
     const realities = [
@@ -140,36 +155,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function changeReality() {
 
-        realityElements.forEach(element => {
+        realityElements.forEach(
+            function (element) {
 
-            const random =
-                realities[
-                    Math.floor(
-                        Math.random() *
-                        realities.length
-                    )
-                ];
+                const randomReality =
+                    realities[
+                        Math.floor(
+                            Math.random() *
+                            realities.length
+                        )
+                    ];
 
-            element.textContent = random;
+                element.textContent =
+                    randomReality;
 
-        });
+            }
+        );
 
     }
 
 
-    setInterval(changeReality, 4500);
+    setInterval(
+        changeReality,
+        4500
+    );
 
 
     /* =========================================
-       CORE
+       ESTABILIDAD DEL CORE
        ========================================= */
 
-    const stabilityElement =
+    const stability =
         document.querySelector(
             ".panel-footer span:nth-child(2)"
         );
 
-    const statusElement =
+    const status =
         document.querySelector(
             ".panel-status"
         );
@@ -177,32 +198,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateCore() {
 
-        if (
-            !stabilityElement ||
-            !statusElement
-        ) {
+        if (!stability || !status) {
             return;
         }
 
 
-        const stability =
-            (Math.random() * 15 + 5)
-            .toFixed(1);
+        const value =
+            (
+                Math.random() * 15 + 5
+            ).toFixed(1);
 
 
-        stabilityElement.textContent =
-            `STABILITY: ${stability}%`;
+        stability.textContent =
+            "STABILITY: " + value + "%";
 
 
-        statusElement.textContent =
-            stability < 8
-                ? "● CRITICAL"
-                : "● UNSTABLE";
+        if (value < 8) {
+
+            status.textContent =
+                "● CRITICAL";
+
+        } else {
+
+            status.textContent =
+                "● UNSTABLE";
+
+        }
 
     }
 
 
-    setInterval(updateCore, 3000);
+    setInterval(
+        updateCore,
+        3000
+    );
 
 
     /* =========================================
@@ -224,6 +253,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "progressBar"
         );
 
+    const progressContainer =
+        document.getElementById(
+            "musicProgress"
+        );
+
     const currentTime =
         document.getElementById(
             "currentTime"
@@ -239,12 +273,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         playButton.addEventListener(
             "click",
-            () => {
+            function () {
 
                 if (!audio.src) {
 
                     alert(
-                        "Añade primero el archivo de música al audioPlayer."
+                        "Todavía no hay una canción conectada."
                     );
 
                     return;
@@ -274,14 +308,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         audio.addEventListener(
             "timeupdate",
-            () => {
+            function () {
 
                 if (!audio.duration) {
                     return;
                 }
 
 
-                const progress =
+                const percent =
                     (
                         audio.currentTime /
                         audio.duration
@@ -289,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 progressBar.style.width =
-                    `${progress}%`;
+                    percent + "%";
 
 
                 const minutes =
@@ -304,7 +338,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 currentTime.textContent =
-                    `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+                    String(minutes).padStart(2, "0")
+                    + ":" +
+                    String(seconds).padStart(2, "0");
 
             }
         );
@@ -312,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         audio.addEventListener(
             "ended",
-            () => {
+            function () {
 
                 playButton.textContent =
                     "▶";
@@ -323,6 +359,41 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
 
+
+        /* CLICK EN LA BARRA */
+
+        if (progressContainer) {
+
+            progressContainer.addEventListener(
+                "click",
+                function (event) {
+
+                    if (!audio.duration) {
+                        return;
+                    }
+
+
+                    const rect =
+                        progressContainer
+                            .getBoundingClientRect();
+
+
+                    const position =
+                        (
+                            event.clientX -
+                            rect.left
+                        ) / rect.width;
+
+
+                    audio.currentTime =
+                        position *
+                        audio.duration;
+
+                }
+            );
+
+        }
+
     }
 
 
@@ -332,12 +403,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log(
         "%c FEID MULTIVERSE SYSTEM ",
-        "color:#00ff73;font-weight:bold;font-size:14px;"
+        "color:#00ff73;font-size:16px;font-weight:bold;"
     );
 
     console.log(
         "%c SYSTEM ONLINE ",
-        "color:#fff;"
+        "color:#ffffff;"
     );
 
 });
