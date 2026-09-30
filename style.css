@@ -16,11 +16,6 @@ body {
     min-height: 100dvh;
 }
 
-
-/* =========================
-   PANTALLA DE ENTRADA
-========================= */
-
 .entry {
     position: relative;
     width: 100vw;
@@ -45,114 +40,22 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
 
-    opacity: 0;
-    transform: scale(1.04);
-
     filter:
+        grayscale(1)
         brightness(.78)
-        contrast(1.08)
-        blur(3px);
+        contrast(1.12);
 
-    animation:
-        imageReveal 4s cubic-bezier(.2,.7,.2,1) forwards;
+    transform: scale(1.02);
+
+    animation: imageStart 3s ease forwards;
 }
 
 
 /* =========================
-   GLITCH CRT / TELEVISIÓN
+   CAPA TV
 ========================= */
 
-.entry-image::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            rgba(255,255,255,.09) 0px,
-            rgba(255,255,255,.09) 1px,
-            rgba(0,0,0,.16) 2px,
-            rgba(0,0,0,.16) 4px
-        );
-
-    mix-blend-mode: screen;
-
-    opacity: .72;
-
-    animation:
-        scanlines 0.12s steps(2) infinite;
-}
-
-
-/* =========================
-   DISTORSIÓN DE TV
-========================= */
-
-.entry-image::after {
-    content: "";
-
-    position: absolute;
-    inset: -3px;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,0,0,.035),
-            transparent 30%,
-            rgba(0,255,255,.035)
-        );
-
-    opacity: .7;
-
-    animation:
-        tvGlitch 3.8s infinite steps(1);
-}
-
-
-/* =========================
-   EFECTO CINEMATOGRÁFICO
-========================= */
-
-.cinematic {
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            transparent 38%,
-            rgba(0,0,0,.18) 68%,
-            rgba(0,0,0,.78) 100%
-        ),
-
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,.20),
-            transparent 38%,
-            rgba(0,0,0,.42)
-        );
-
-    opacity: 0;
-
-    animation:
-        cinematicIn 4s ease forwards;
-}
-
-
-/* =========================
-   RUIDO CRT
-========================= */
-
-.entry::before {
-    content: "";
-
+.tv-effect {
     position: absolute;
     inset: 0;
 
@@ -160,30 +63,114 @@ body {
 
     pointer-events: none;
 
-    background:
-        repeating-radial-gradient(
-            circle at 20% 30%,
-            rgba(255,255,255,.055) 0px,
-            rgba(255,255,255,.055) 1px,
-            transparent 1px,
-            transparent 4px
-        );
-
-    opacity: .10;
-
-    animation:
-        noise 0.18s steps(2) infinite;
+    overflow: hidden;
 }
 
 
 /* =========================
-   VIGNETTE CRT
+   LÍNEAS CRT
 ========================= */
 
-.entry::after {
-    content: "";
-
+.tv-scanlines {
     position: absolute;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,.12) 0px,
+            rgba(255,255,255,.12) 1px,
+            rgba(0,0,0,.20) 2px,
+            rgba(0,0,0,.20) 4px
+        );
+
+    opacity: .65;
+
+    animation:
+        scanMove .12s linear infinite;
+}
+
+
+/* =========================
+   RUIDO DE TELEVISIÓN
+========================= */
+
+.tv-noise {
+    position: absolute;
+
+    inset: -50%;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            rgba(255,255,255,.10) 0px,
+            rgba(255,255,255,.10) 1px,
+            transparent 2px,
+            transparent 5px
+        );
+
+    opacity: .13;
+
+    animation:
+        noiseMove .15s steps(2) infinite;
+}
+
+
+/* =========================
+   GLITCH HORIZONTAL
+========================= */
+
+.tv-glitch {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 0%,
+            transparent 38%,
+            rgba(255,255,255,.10) 38.2%,
+            transparent 38.6%,
+            transparent 62%,
+            rgba(255,255,255,.08) 62.2%,
+            transparent 62.7%,
+            transparent 81%,
+            rgba(255,255,255,.12) 81.2%,
+            transparent 81.6%
+        );
+
+    opacity: .65;
+
+    animation:
+        glitchTV 2.8s infinite steps(1);
+}
+
+
+/* =========================
+   PARPADEO
+========================= */
+
+.tv-flicker {
+    position: absolute;
+
+    inset: 0;
+
+    background: #fff;
+
+    opacity: 0;
+
+    animation:
+        flicker 3.5s infinite steps(1);
+}
+
+
+/* =========================
+   CINEMÁTICO
+========================= */
+
+.cinematic {
+    position: absolute;
+
     inset: 0;
 
     z-index: 4;
@@ -193,15 +180,22 @@ body {
     background:
         radial-gradient(
             ellipse at center,
-            transparent 45%,
-            rgba(0,0,0,.28) 72%,
+            transparent 35%,
+            rgba(0,0,0,.20) 68%,
             rgba(0,0,0,.82) 100%
+        ),
+
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.20),
+            transparent 40%,
+            rgba(0,0,0,.45)
         );
 }
 
 
 /* =========================
-   PRESS
+   BOTÓN INICIAR
 ========================= */
 
 .press {
@@ -210,20 +204,21 @@ body {
     z-index: 10;
 
     left: 50%;
-    bottom: clamp(40px, 8vh, 90px);
+    bottom: 8vh;
 
     transform: translateX(-50%);
 
-    min-width: 150px;
-    min-height: 46px;
+    width: 110px;
+    height: 34px;
 
-    padding: 12px 28px;
-
-    border: 1px solid rgba(255,255,255,.75);
+    border:
+        1px solid
+        rgba(255,255,255,.75);
 
     border-radius: 0;
 
-    background: rgba(0,0,0,.28);
+    background:
+        rgba(0,0,0,.40);
 
     color: #fff;
 
@@ -232,21 +227,17 @@ body {
         "Times New Roman",
         serif;
 
-    font-size: 12px;
+    font-size: 10px;
 
-    font-weight: 400;
-
-    letter-spacing: .42em;
-    text-indent: .42em;
+    letter-spacing: .30em;
+    text-indent: .30em;
 
     cursor: pointer;
-
-    -webkit-tap-highlight-color: transparent;
 
     opacity: 0;
 
     animation:
-        buttonAppear 1.5s 2.5s ease forwards;
+        buttonIn 1.5s 2s ease forwards;
 
     transition:
         background .25s ease,
@@ -258,11 +249,11 @@ body {
 .press:hover {
 
     background:
-        rgba(255,255,255,.08);
+        rgba(255,255,255,.10);
 
     box-shadow:
-        0 0 25px
-        rgba(255,255,255,.15);
+        0 0 20px
+        rgba(255,255,255,.18);
 }
 
 
@@ -270,67 +261,194 @@ body {
 
     transform:
         translateX(-50%)
-        scale(.95);
+        scale(.94);
 }
 
 
 /* =========================
-   ANIMACIÓN DE IMAGEN
+   ANIMACIONES
 ========================= */
 
-@keyframes imageReveal {
+@keyframes imageStart {
 
     0% {
-
         opacity: 0;
+        filter:
+            grayscale(1)
+            brightness(.15)
+            contrast(1.5)
+            blur(6px);
 
         transform:
-            scale(1.04);
-
-        filter:
-            brightness(.25)
-            contrast(1.2)
-            blur(7px);
-    }
-
-    45% {
-
-        opacity: .72;
+            scale(1.06);
     }
 
     100% {
+        opacity: 1;
 
+        filter:
+            grayscale(1)
+            brightness(.78)
+            contrast(1.12)
+            blur(0);
+
+        transform:
+            scale(1.02);
+    }
+}
+
+
+@keyframes scanMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(4px);
+    }
+}
+
+
+@keyframes noiseMove {
+
+    0% {
+        transform:
+            translate(0,0);
+    }
+
+    25% {
+        transform:
+            translate(2%,-1%);
+    }
+
+    50% {
+        transform:
+            translate(-2%,2%);
+    }
+
+    75% {
+        transform:
+            translate(1%,1%);
+    }
+
+    100% {
+        transform:
+            translate(0,0);
+    }
+}
+
+
+@keyframes glitchTV {
+
+    0%,
+    72%,
+    100% {
+        transform:
+            translateX(0)
+            skewX(0);
+    }
+
+    73% {
+        transform:
+            translateX(-10px)
+            skewX(-1deg);
+    }
+
+    74% {
+        transform:
+            translateX(14px)
+            skewX(1deg);
+    }
+
+    75% {
+        transform:
+            translateX(-5px);
+    }
+
+    76% {
+        transform:
+            translateX(0);
+    }
+
+    91% {
+        transform:
+            translateX(5px);
+    }
+
+    92% {
+        transform:
+            translateX(0);
+    }
+}
+
+
+@keyframes flicker {
+
+    0%,
+    87%,
+    100% {
+        opacity: 0;
+    }
+
+    88% {
+        opacity: .08;
+    }
+
+    89% {
+        opacity: 0;
+    }
+
+    93% {
+        opacity: .04;
+    }
+
+    94% {
+        opacity: 0;
+    }
+}
+
+
+@keyframes buttonIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(10px);
+    }
+
+    to {
         opacity: 1;
 
         transform:
-            scale(1);
-
-        filter:
-            brightness(.78)
-            contrast(1.08)
-            blur(0);
+            translateX(-50%)
+            translateY(0);
     }
 }
 
 
 /* =========================
-   SCANLINES
+   MÓVIL
 ========================= */
 
-@keyframes scanlines {
+@media (max-width: 600px) {
 
-    0% {
-        transform: translateY(0);
+    .press {
+
+        bottom:
+            max(
+                30px,
+                env(safe-area-inset-bottom)
+            );
+
+        width: 100px;
+        height: 32px;
+
+        font-size: 9px;
+
+        letter-spacing: .25em;
+        text-indent: .25em;
     }
-
-    25% {
-        transform: translateY(-2px);
-    }
-
-    50% {
-        transform: translateY(1px);
-    }
-
-    75% {
-        transform: translateY(-1px);
-   
+}
