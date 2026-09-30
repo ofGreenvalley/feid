@@ -1,98 +1,136 @@
-const pressButton = document.getElementById("pressButton");
+document.addEventListener("DOMContentLoaded", () => {
 
-const avatarButton = document.getElementById("avatarButton");
-const plusButton = document.getElementById("plusButton");
-const friendsButton = document.getElementById("friendsButton");
-const musicButton = document.getElementById("musicButton");
+    const pressButton = document.getElementById("pressButton");
 
-const messagePanel = document.getElementById("messagePanel");
-const friendsPanel = document.getElementById("friendsPanel");
-const musicPanel = document.getElementById("musicPanel");
+    const avatarButton = document.getElementById("avatarButton");
+    const friendsButton = document.getElementById("friendsButton");
+    const musicButton = document.getElementById("musicButton");
+    const plusButton = document.getElementById("plusButton");
 
-
-/* =========================
-   INICIAR
-========================= */
-
-pressButton.addEventListener("click", () => {
-
-    document.body.classList.add("leaving");
-
-});
+    const messagePanel = document.getElementById("messagePanel");
+    const friendsPanel = document.getElementById("friendsPanel");
+    const musicPanel = document.getElementById("musicPanel");
 
 
-/* =========================
-   CERRAR TODOS LOS PANELES
-========================= */
+    /* =========================
+       INICIAR
+    ========================= */
 
-function closePanels() {
+    pressButton.addEventListener("click", () => {
 
-    messagePanel.classList.remove("open");
+        document.body.classList.add("leaving");
 
-    friendsPanel.classList.remove("open");
-
-    musicPanel.classList.remove("open");
-
-}
+    });
 
 
-/* =========================
-   AVATAR
-========================= */
+    /* =========================
+       CERRAR PANELES
+    ========================= */
 
-avatarButton.addEventListener("click", () => {
+    function closePanels() {
 
-    const isOpen = messagePanel.classList.contains("open");
+        messagePanel.classList.remove("open");
+        friendsPanel.classList.remove("open");
+        musicPanel.classList.remove("open");
 
-    closePanels();
-
-    if (!isOpen) {
-        messagePanel.classList.add("open");
     }
 
-});
+
+    /* =========================
+       AVATAR
+    ========================= */
+
+    avatarButton.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        const abierto =
+            messagePanel.classList.contains("open");
+
+        closePanels();
+
+        if (!abierto) {
+
+            messagePanel.classList.add("open");
+
+        }
+
+    });
 
 
-/* =========================
-   AMIGOS
-========================= */
+    /* =========================
+       AMIGOS
+    ========================= */
 
-friendsButton.addEventListener("click", () => {
+    friendsButton.addEventListener("click", (event) => {
 
-    const isOpen = friendsPanel.classList.contains("open");
+        event.stopPropagation();
 
-    closePanels();
+        const abierto =
+            friendsPanel.classList.contains("open");
 
-    if (!isOpen) {
-        friendsPanel.classList.add("open");
-    }
+        closePanels();
 
-});
+        if (!abierto) {
 
+            friendsPanel.classList.add("open");
 
-/* =========================
-   MÚSICA
-========================= */
+        }
 
-musicButton.addEventListener("click", () => {
-
-    const isOpen = musicPanel.classList.contains("open");
-
-    closePanels();
-
-    if (!isOpen) {
-        musicPanel.classList.add("open");
-    }
-
-});
+    });
 
 
-/* =========================
-   +
-========================= */
+    /* =========================
+       MÚSICA
+    ========================= */
 
-plusButton.addEventListener("click", () => {
+    musicButton.addEventListener("click", (event) => {
 
-    closePanels();
+        event.stopPropagation();
+
+        const abierto =
+            musicPanel.classList.contains("open");
+
+        closePanels();
+
+        if (!abierto) {
+
+            musicPanel.classList.add("open");
+
+        }
+
+    });
+
+
+    /* =========================
+       +
+    ========================= */
+
+    plusButton.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        closePanels();
+
+    });
+
+
+    /* =========================
+       CLIC FUERA
+    ========================= */
+
+    document.addEventListener("click", (event) => {
+
+        if (
+            !event.target.closest(".floating-panel") &&
+            !event.target.closest(".avatar-button") &&
+            !event.target.closest(".side-button")
+        ) {
+
+            closePanels();
+
+        }
+
+    });
 
 });
