@@ -42,14 +42,13 @@
                 INICIAR
             </button>
 
+            <div class="design-signature">
+                Hecho a mano por Feid.
+            </div>
+
         </div>
 
     </div>
-```html
-<div class="design-signature">
-     Hecho a mano por Feid.
-</div>
-```
 
 
     <!-- =========================
@@ -72,18 +71,24 @@
         </header>
 
 
-        <!-- MENÚ -->
+        <!-- =========================
+             MENÚ
+             ========================= -->
 
-        <nav class="menu">
+        <nav class="menu" id="menu">
 
             <button
                 class="menu-main"
                 id="menuButton"
+                type="button"
             >
 
-                MENU
+                <span>MENU</span>
 
-                <span>+</span>
+                <span
+                    class="menu-symbol"
+                    id="menuSymbol"
+                >+</span>
 
             </button>
 
@@ -93,15 +98,24 @@
                 id="menuOptions"
             >
 
-                <button>
+                <button
+                    type="button"
+                    data-section="home"
+                >
                     HOME
                 </button>
 
-                <button>
+                <button
+                    type="button"
+                    data-section="friends"
+                >
                     FRIENDS
                 </button>
 
-                <button>
+                <button
+                    type="button"
+                    data-section="music"
+                >
                     MUSIC
                 </button>
 
@@ -111,442 +125,389 @@
 
 
         <!-- =========================
-             CENTRO
+             SECCIONES
              ========================= -->
 
-        <!-- =========================
-     MENÚ
-     ========================= -->
-
-<nav class="menu">
-
-    <button
-        class="menu-main"
-        id="menuButton"
-    >
-        MENU
-        <span>+</span>
-    </button>
-
-    <div
-        class="menu-options"
-        id="menuOptions"
-    >
-
-        <button data-section="home">
-            HOME
-        </button>
-
-        <button data-section="friends">
-            FRIENDS
-        </button>
-
-        <button data-section="music">
-            MUSIC
-        </button>
-
-    </div>
-
-</nav>
+        <div class="sections">
 
 
-<!-- =========================
-     CONTENIDO
-     ========================= -->
+            <!-- =====================
+                 HOME
+                 ===================== -->
 
-<section class="sections">
+            <section
+                class="section active"
+                id="section-home"
+            >
+
+                <div class="central">
 
 
-    <!-- =====================
-         HOME
-         ===================== -->
+                    <!-- AVATAR -->
 
-    <div
-        class="section active"
-        id="section-home"
-    >
+                    <div class="avatar-container">
 
-        <div class="central">
+                        <div class="avatar-frame">
 
-            <!-- AVATAR -->
+                            <div class="corner top-left"></div>
+                            <div class="corner top-right"></div>
+                            <div class="corner bottom-left"></div>
+                            <div class="corner bottom-right"></div>
 
-            <div class="avatar-container">
 
-                <div class="avatar-frame">
+                            <div class="avatar">
 
-                    <div class="corner top-left"></div>
-                    <div class="corner top-right"></div>
-                    <div class="corner bottom-left"></div>
-                    <div class="corner bottom-right"></div>
+                                <img
+                                    src="https://u.cubeupload.com/Eradicater/eedb771df5045f58db69.jpg"
+                                    alt="Avatar FEID"
+                                >
 
-                    <div class="avatar">
+                            </div>
 
-                        <img
-                            src="https://u.cubeupload.com/Eradicater/eedb771df5045f58db69.jpg"
-                            alt="Avatar"
-                        >
+                        </div>
 
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- MULTIVERSE CORE -->
 
+                    <div class="universe-panel">
 
-            <!-- MULTIVERSE CORE -->
+                        <div class="panel-header">
 
-            <div class="universe-panel">
+                            <span>
+                                MULTIVERSE CORE
+                            </span>
 
-                <div class="panel-header">
+                            <span class="panel-status">
+                                ● UNSTABLE
+                            </span>
 
-                    <span>MULTIVERSE CORE</span>
+                        </div>
 
-                    <span class="panel-status">
-                        ● UNSTABLE
-                    </span>
-
-                </div>
-
-                <div class="screen multiverse-screen">
-
-                    <div class="space-noise"></div>
-
-                    <div class="reality reality-one">
-                        <span>REALITY_01</span>
-                    </div>
-
-                    <div class="reality reality-two">
-                        <span>REALITY_07</span>
-                    </div>
-
-                    <div class="reality reality-three">
-                        <span>REALITY_∞</span>
-                    </div>
-
-                    <div class="core">
-
-                        <div class="core-ring ring-one"></div>
-                        <div class="core-ring ring-two"></div>
-                        <div class="core-ring ring-three"></div>
-
-                        <div class="core-energy"></div>
-
-                    </div>
-
-                    <div class="core-particles">
-
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-
-                    </div>
-
-                    <div class="glitch-bar glitch-one"></div>
-                    <div class="glitch-bar glitch-two"></div>
-                    <div class="glitch-bar glitch-three"></div>
-
-                    <div class="screen-scanline"></div>
-
-                    <div class="signal-glitch"></div>
-
-                </div>
-
-                <div class="panel-footer">
-
-                    <span>
-                        REALITIES: 1,248,672
-                    </span>
-
-                    <span>
-                        STABILITY: 12.6%
-                    </span>
-
-                    <span>
-                        CONTAINMENT: BREACHING...
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================
-         FRIENDS
-         ===================== -->
-
-    <div
-        class="section"
-        id="section-friends"
-    >
-
-        <div class="friends-panel">
-
-            <div class="section-title">
-                <span>FRIENDS</span>
-                <small>NETWORK // ONLINE</small>
-            </div>
-
-            <div class="friends-grid">
-
-                <div class="friend-card">
-                    <div class="friend-avatar">01</div>
-                    <div>
-                        <strong>FRIEND_01</strong>
-                        <small>● ONLINE</small>
-                    </div>
-                </div>
-
-                <div class="friend-card">
-                    <div class="friend-avatar">02</div>
-                    <div>
-                        <strong>FRIEND_02</strong>
-                        <small>● ONLINE</small>
-                    </div>
-                </div>
-
-                <div class="friend-card">
-                    <div class="friend-avatar">03</div>
-                    <div>
-                        <strong>FRIEND_03</strong>
-                        <small>● OFFLINE</small>
-                    </div>
-                </div>
-
-                <div class="friend-card">
-                    <div class="friend-avatar">04</div>
-                    <div>
-                        <strong>FRIEND_04</strong>
-                        <small>● ONLINE</small>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================
-         MUSIC
-         ===================== -->
-
-    <div
-        class="section"
-        id="section-music"
-    >
-
-        <div class="music-panel">
-
-            <div class="section-title">
-                <span>FEID // MUSIC</span>
-                <small>NOW PLAYING</small>
-            </div>
-
-
-            <div class="music-player">
-
-                <div class="album-art">
-
-                    <div class="album-glow"></div>
-
-                    <span>FEID</span>
-
-                </div>
-
-
-                <div class="music-info">
-
-                    <div class="music-label">
-                        CURRENT TRANSMISSION
-                    </div>
-
-                    <h2>FEID</h2>
-
-                    <p>
-                        MULTIVERSE RADIO
-                    </p>
-
-
-                    <div class="music-progress">
 
                         <div
-                            class="progress-bar"
-                            id="progressBar"
-                        ></div>
+                            class="screen multiverse-screen"
+                        >
+
+                            <div class="reality reality-one">
+                                <span>REALITY_01</span>
+                            </div>
+
+                            <div class="reality reality-two">
+                                <span>REALITY_07</span>
+                            </div>
+
+                            <div class="reality reality-three">
+                                <span>REALITY_∞</span>
+                            </div>
+
+
+                            <div class="core">
+
+                                <div
+                                    class="core-ring ring-one"
+                                ></div>
+
+                                <div
+                                    class="core-ring ring-two"
+                                ></div>
+
+                                <div
+                                    class="core-ring ring-three"
+                                ></div>
+
+                                <div class="core-energy"></div>
+
+                            </div>
+
+
+                            <div class="core-particles">
+
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+
+                            </div>
+
+
+                            <div class="glitch-bar glitch-one"></div>
+                            <div class="glitch-bar glitch-two"></div>
+                            <div class="glitch-bar glitch-three"></div>
+
+                            <div class="screen-scanline"></div>
+
+                            <div class="signal-glitch"></div>
+
+                        </div>
+
+
+                        <div class="panel-footer">
+
+                            <span>
+                                REALITIES: 1,248,672
+                            </span>
+
+                            <span>
+                                STABILITY: 12.6%
+                            </span>
+
+                            <span>
+                                CONTAINMENT: BREACHING...
+                            </span>
+
+                        </div>
 
                     </div>
 
+                </div>
 
-                    <div class="music-time">
+            </section>
 
-                        <span id="currentTime">
-                            00:00
-                        </span>
+
+            <!-- =====================
+                 FRIENDS
+                 ===================== -->
+
+            <section
+                class="section"
+                id="section-friends"
+            >
+
+                <div class="friends-panel">
+
+                    <div class="section-title">
 
                         <span>
-                            03:30
+                            FRIENDS
                         </span>
 
+                        <small>
+                            NETWORK // ONLINE
+                        </small>
+
                     </div>
 
 
-                    <div class="music-controls">
+                    <div class="friends-grid">
 
-                        <button id="previous">
-                            ◀
-                        </button>
+                        <div class="friend-card">
 
-                        <button
-                            class="play-button"
-                            id="playButton"
-                        >
-                            ▶
-                        </button>
+                            <div class="friend-avatar">
+                                01
+                            </div>
 
-                        <button id="next">
-                            ▶
-                        </button>
+                            <div>
+
+                                <strong>
+                                    FRIEND_01
+                                </strong>
+
+                                <small>
+                                    ● ONLINE
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="friend-card">
+
+                            <div class="friend-avatar">
+                                02
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    FRIEND_02
+                                </strong>
+
+                                <small>
+                                    ● ONLINE
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="friend-card">
+
+                            <div class="friend-avatar">
+                                03
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    FRIEND_03
+                                </strong>
+
+                                <small>
+                                    ● OFFLINE
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="friend-card">
+
+                            <div class="friend-avatar">
+                                04
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    FRIEND_04
+                                </strong>
+
+                                <small>
+                                    ● ONLINE
+                                </small>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
+            </section>
 
 
-            <!-- AUDIO
-                 Ponemos el archivo después -->
-            <audio id="audioPlayer"></audio>
+            <!-- =====================
+                 MUSIC
+                 ===================== -->
 
-        </div>
+            <section
+                class="section"
+                id="section-music"
+            >
 
-    </div>
+                <div class="music-panel">
 
-</section>
+                    <div class="section-title">
 
+                        <span>
+                            FEID // MUSIC
+                        </span>
 
-            <!-- AVATAR -->
-
-            <div class="avatar-container">
-
-                <div class="avatar-frame">
-
-                    <div class="corner top-left"></div>
-                    <div class="corner top-right"></div>
-                    <div class="corner bottom-left"></div>
-                    <div class="corner bottom-right"></div>
-
-
-                    <div class="avatar">
-
-                        <img
-                            src="https://u.cubeupload.com/Eradicater/eedb771df5045f58db69.jpg"
-                            alt="Avatar"
-                        >
+                        <small>
+                            NOW PLAYING
+                        </small>
 
                     </div>
 
+
+                    <div class="music-player">
+
+
+                        <div class="album-art">
+
+                            <div class="album-glow"></div>
+
+                            <span>
+                                FEID
+                            </span>
+
+                        </div>
+
+
+                        <div class="music-info">
+
+                            <div class="music-label">
+                                CURRENT TRANSMISSION
+                            </div>
+
+                            <h2>
+                                FEID
+                            </h2>
+
+                            <p>
+                                MULTIVERSE RADIO
+                            </p>
+
+
+                            <div
+                                class="music-progress"
+                                id="musicProgress"
+                            >
+
+                                <div
+                                    class="progress-bar"
+                                    id="progressBar"
+                                ></div>
+
+                            </div>
+
+
+                            <div class="music-time">
+
+                                <span id="currentTime">
+                                    00:00
+                                </span>
+
+                                <span>
+                                    00:00
+                                </span>
+
+                            </div>
+
+
+                            <div class="music-controls">
+
+                                <button
+                                    type="button"
+                                    id="previous"
+                                >
+                                    ◀
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="play-button"
+                                    id="playButton"
+                                >
+                                    ▶
+                                </button>
+
+                                <button
+                                    type="button"
+                                    id="next"
+                                >
+                                    ▶
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <audio
+                        id="audioPlayer"
+                        preload="metadata"
+                    ></audio>
+
                 </div>
 
-            </div>
-
-
-            <!-- =========================
-                 MONITOR
-                 ========================= -->
-
-           <div class="universe-panel">
-
-    <div class="panel-header">
-
-        <span>MULTIVERSE CORE</span>
-
-        <span class="panel-status">
-            ● UNSTABLE
-        </span>
-
-    </div>
-
-    <div class="screen multiverse-screen">
-
-        <div class="space-noise"></div>
-
-        <div class="reality reality-one">
-            <span>REALITY_01</span>
-        </div>
-
-        <div class="reality reality-two">
-            <span>REALITY_07</span>
-        </div>
-
-        <div class="reality reality-three">
-            <span>REALITY_∞</span>
-        </div>
-
-        <div class="core">
-
-            <div class="core-ring ring-one"></div>
-            <div class="core-ring ring-two"></div>
-            <div class="core-ring ring-three"></div>
-
-            <div class="core-energy"></div>
+            </section>
 
         </div>
-
-        <div class="core-particles">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-        <div class="glitch-bar glitch-one"></div>
-        <div class="glitch-bar glitch-two"></div>
-        <div class="glitch-bar glitch-three"></div>
-
-        <div class="screen-scanline"></div>
-
-        <div class="signal-glitch"></div>
-
-    </div>
-
-    <div class="panel-footer">
-
-        <span>
-            REALITIES: 1,248,672
-        </span>
-
-        <span>
-            STABILITY: 12.6%
-        </span>
-
-        <span>
-            CONTAINMENT: BREACHING...
-        </span>
-
-    </div>
-
-</div>
 
     </main>
 
