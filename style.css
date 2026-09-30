@@ -1,7 +1,3 @@
-/* ================================
-   RESET
-================================ */
-
 * {
     margin: 0;
     padding: 0;
@@ -13,21 +9,19 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background: #000;
 }
 
 body {
-    background: #020303;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
-/* ================================
-   INTRO / LATVERIA
-================================ */
+/* =========================
+   LATVERIA
+========================= */
 
 .intro {
     position: relative;
-
     width: 100vw;
     height: 100vh;
     height: 100dvh;
@@ -36,178 +30,298 @@ body {
     align-items: center;
     justify-content: center;
 
-    background-image:
-        url("https://u.cubeupload.com/Eradicater/file00000000b36081f5.png");
-
+    background-image: url("https://u.cubeupload.com/Eradicater/file00000000b36081f5.png");
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
 
+    overflow: hidden;
     isolation: isolate;
 }
 
+/* =========================
+   CINEMATIC COLOR
+========================= */
 
-/* ================================
-   CINEMATIC LOOK
-================================ */
-
-.cinematic-overlay {
+.intro::before {
+    content: "";
     position: absolute;
     inset: 0;
-
-    z-index: -1;
+    z-index: 1;
+    pointer-events: none;
 
     background:
         linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0.62) 0%,
-            rgba(0, 0, 0, 0.20) 42%,
-            rgba(0, 0, 0, 0.72) 100%
+            rgba(0,0,0,.72) 0%,
+            rgba(0,0,0,.15) 38%,
+            rgba(0,0,0,.78) 100%
         ),
 
         radial-gradient(
-            circle at center,
-            rgba(0, 255, 145, 0.07),
-            transparent 55%
+            ellipse at center,
+            rgba(0,255,140,.14),
+            transparent 58%
         );
 
-    pointer-events: none;
+    animation: cinematicPulse 5s ease-in-out infinite;
 }
 
+@keyframes cinematicPulse {
+    0%, 100% {
+        opacity: .85;
+    }
 
-/* ================================
-   FILM VIGNETTE
-================================ */
+    50% {
+        opacity: 1;
+    }
+}
+
+/* =========================
+   VIGNETTE
+========================= */
 
 .intro::after {
     content: "";
-
     position: absolute;
-    inset: 0;
-
+    inset: -10%;
+    z-index: 2;
     pointer-events: none;
 
     background:
         radial-gradient(
             ellipse at center,
-            transparent 42%,
-            rgba(0, 0, 0, 0.38) 100%
+            transparent 35%,
+            rgba(0,0,0,.78) 100%
         );
-
-    z-index: 1;
 }
 
+/* =========================
+   GLITCH LAYERS
+========================= */
 
-/* ================================
-   SUBTLE SCANLINES
-================================ */
+.intro {
+    animation: screenGlitch 7s infinite;
+}
 
-.scanlines {
+@keyframes screenGlitch {
+
+    0%, 82%, 100% {
+        transform: translate(0);
+        filter: none;
+    }
+
+    83% {
+        transform: translate(-2px, 1px);
+        filter:
+            contrast(1.12)
+            brightness(1.05);
+    }
+
+    84% {
+        transform: translate(3px, -1px);
+        filter:
+            contrast(1.2)
+            saturate(1.3);
+    }
+
+    85% {
+        transform: translate(-1px, 0);
+        filter: none;
+    }
+}
+
+/* Green glitch streaks */
+
+.intro .scanlines {
     position: absolute;
     inset: 0;
+    z-index: 4;
 
     pointer-events: none;
 
-    opacity: 0.055;
-
     background:
         repeating-linear-gradient(
-            to bottom,
+            0deg,
             transparent 0px,
-            transparent 3px,
-            rgba(255, 255, 255, 0.12) 4px
+            transparent 5px,
+            rgba(0,255,140,.08) 6px,
+            transparent 7px
         );
 
-    z-index: 2;
+    opacity: .35;
+
+    animation:
+        scanMove 4s linear infinite,
+        glitchFlash 6s infinite;
 }
 
+@keyframes scanMove {
+    from {
+        background-position: 0 0;
+    }
 
-/* ================================
+    to {
+        background-position: 0 120px;
+    }
+}
+
+@keyframes glitchFlash {
+
+    0%, 88%, 100% {
+        opacity: .28;
+    }
+
+    89% {
+        opacity: .75;
+    }
+
+    90% {
+        opacity: .15;
+    }
+
+    91% {
+        opacity: .6;
+    }
+
+    92% {
+        opacity: .28;
+    }
+}
+
+/* =========================
    CONTENT
-================================ */
+========================= */
 
 .intro-content {
     position: relative;
-
-    z-index: 5;
+    z-index: 10;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     text-align: center;
 
-    transform: translateY(-2vh);
-
-    animation: appear 1.8s ease forwards;
+    animation: introAppear 2s ease-out forwards;
 }
 
+@keyframes introAppear {
+    from {
+        opacity: 0;
+        transform: scale(1.04);
+        filter: blur(5px);
+    }
 
-/* ================================
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* =========================
    FEID
-================================ */
+========================= */
 
 .feid-title {
-    color: #f1f1f1;
+    position: relative;
+
+    color: #f4f4f4;
 
     font-family:
-        "Times New Roman",
         Georgia,
+        "Times New Roman",
         serif;
 
-    font-size: clamp(38px, 5vw, 64px);
+    font-size: clamp(32px, 5vw, 58px);
 
     font-weight: 600;
 
-    letter-spacing: 0.28em;
-
-    text-indent: 0.28em;
+    letter-spacing: .25em;
+    text-indent: .25em;
 
     text-shadow:
-        0 0 8px rgba(255,255,255,0.18),
-        0 0 22px rgba(0,255,140,0.18);
+        0 0 8px rgba(255,255,255,.2),
+        0 0 22px rgba(0,255,140,.35),
+        0 0 45px rgba(0,255,140,.12);
 
-    position: relative;
+    animation:
+        titleGlow 3s ease-in-out infinite,
+        titleGlitch 6s infinite;
 }
 
+@keyframes titleGlow {
 
-/* ================================
-   NORDIC / RUNE FEEL
-================================ */
+    0%, 100% {
+        text-shadow:
+            0 0 8px rgba(255,255,255,.2),
+            0 0 22px rgba(0,255,140,.3);
+    }
+
+    50% {
+        text-shadow:
+            0 0 10px rgba(255,255,255,.35),
+            0 0 30px rgba(0,255,140,.65),
+            0 0 55px rgba(0,255,140,.18);
+    }
+}
+
+@keyframes titleGlitch {
+
+    0%, 88%, 100% {
+        transform: translate(0);
+    }
+
+    89% {
+        transform: translate(-3px, 0);
+    }
+
+    90% {
+        transform: translate(3px, 0);
+    }
+
+    91% {
+        transform: translate(-1px, 0);
+    }
+
+    92% {
+        transform: translate(0);
+    }
+}
+
+/* Rune symbols */
 
 .feid-title::before,
 .feid-title::after {
     content: "ᛉ";
 
     position: absolute;
-
     top: 50%;
 
     transform: translateY(-50%);
 
-    color: rgba(0, 255, 140, 0.42);
+    color: rgba(0,255,140,.65);
 
-    font-size: 0.45em;
+    font-size: .42em;
 
     text-shadow:
-        0 0 10px rgba(0,255,140,0.45);
+        0 0 12px rgba(0,255,140,.7);
 }
 
 .feid-title::before {
     right: 100%;
-    margin-right: 18px;
+    margin-right: 15px;
 }
 
 .feid-title::after {
     left: 100%;
-    margin-left: 18px;
+    margin-left: 15px;
 }
 
-
-/* ================================
+/* =========================
    LINE
-================================ */
+========================= */
 
 .title-line {
     width: 70px;
@@ -220,133 +334,96 @@ body {
         linear-gradient(
             90deg,
             transparent,
-            rgba(0,255,140,0.8),
+            #00ff8c,
             transparent
         );
 
     box-shadow:
-        0 0 10px rgba(0,255,140,0.35);
+        0 0 12px rgba(0,255,140,.7);
+
+    animation: linePulse 2s ease-in-out infinite;
 }
 
+@keyframes linePulse {
+    0%, 100% {
+        opacity: .45;
+        transform: scaleX(.8);
+    }
 
-/* ================================
-   START BUTTON
-================================ */
+    50% {
+        opacity: 1;
+        transform: scaleX(1.15);
+    }
+}
+
+/* =========================
+   BUTTON
+========================= */
 
 #startButton {
     appearance: none;
 
-    border: 1px solid rgba(0, 255, 140, 0.42);
-
-    background:
-        rgba(0, 0, 0, 0.38);
-
-    color: rgba(255,255,255,0.88);
-
-    padding: 12px 30px;
-
     min-width: 120px;
 
-    font-size: 11px;
+    padding: 12px 28px;
 
-    letter-spacing: 0.32em;
+    border: 1px solid rgba(0,255,140,.55);
 
-    text-indent: 0.32em;
+    background: rgba(0,0,0,.45);
+
+    color: #eee;
+
+    font-size: 10px;
+
+    letter-spacing: .3em;
+    text-indent: .3em;
 
     cursor: pointer;
 
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 
-    -webkit-backdrop-filter: blur(7px);
+    box-shadow:
+        0 0 15px rgba(0,255,140,.08);
 
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: .3s ease;
 }
 
 #startButton:hover {
-    background: rgba(0,255,140,0.10);
+    color: #fff;
 
-    border-color:
-        rgba(0,255,140,0.85);
+    border-color: #00ff8c;
+
+    background: rgba(0,255,140,.1);
 
     box-shadow:
-        0 0 18px rgba(0,255,140,0.18);
+        0 0 25px rgba(0,255,140,.25);
 
     transform: translateY(-2px);
 }
 
 #startButton:active {
-    transform: scale(0.96);
+    transform: scale(.95);
 }
 
-
-/* ================================
-   ENTRY ANIMATION
-================================ */
-
-@keyframes appear {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(-2vh)
-            scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(-2vh)
-            scale(1);
-    }
-}
-
-
-/* ================================
+/* =========================
    MOBILE
-================================ */
+========================= */
 
 @media (max-width: 600px) {
 
-    .intro {
-        background-position: center center;
-    }
-
-    .cinematic-overlay {
-        background:
-            linear-gradient(
-                180deg,
-                rgba(0,0,0,0.68) 0%,
-                rgba(0,0,0,0.18) 45%,
-                rgba(0,0,0,0.78) 100%
-            ),
-
-            radial-gradient(
-                circle at center,
-                rgba(0,255,145,0.06),
-                transparent 60%
-            );
-    }
-
-    .intro-content {
-        transform: translateY(-4vh);
-    }
-
     .feid-title {
-        font-size: 36px;
-        letter-spacing: 0.23em;
-        text-indent: 0.23em;
+        font-size: 34px;
+        letter-spacing: .22em;
+        text-indent: .22em;
     }
 
     .feid-title::before {
-        margin-right: 11px;
+        margin-right: 10px;
     }
 
     .feid-title::after {
-        margin-left: 11px;
+        margin-left: 10px;
     }
 
     .title-line {
@@ -356,25 +433,14 @@ body {
     }
 
     #startButton {
-        min-width: 118px;
-        padding: 13px 25px;
-        font-size: 10px;
+        min-width: 115px;
+        padding: 13px 24px;
     }
 }
-
-
-/* ================================
-   VERY SMALL PHONES
-================================ */
 
 @media (max-width: 380px) {
 
     .feid-title {
-        font-size: 31px;
-    }
-
-    #startButton {
-        min-width: 110px;
-        padding: 12px 22px;
+        font-size: 30px;
     }
 }
